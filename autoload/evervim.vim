@@ -283,7 +283,7 @@ try
 python3 << EOF
 import sys,os,vim
 sys.path.append(os.path.join(vim.eval('expand("<sfile>:p:h")'),'../plugin/py/'))
-from evervimmer import Evervimmer
+from .evervimmer import Evervimmer
 EOF
 catch
     "vim.command(":echoerr ' *** import markdown error! you must markdown library. see :help evervim. *** '")
