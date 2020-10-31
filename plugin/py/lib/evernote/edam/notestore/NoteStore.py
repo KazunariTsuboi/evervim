@@ -7,7 +7,7 @@
 #
 
 from thrift.Thrift import TType, TMessageType, TException, TApplicationException
-from ttypes import *
+from .ttypes import *
 from thrift.Thrift import TProcessor
 from thrift.transport import TTransport
 from thrift.protocol import TBinaryProtocol, TProtocol
@@ -7254,9 +7254,9 @@ class Processor(Iface, TProcessor):
     result = getSyncState_result()
     try:
       result.success = self._handler.getSyncState(args.authenticationToken)
-    except evernote.edam.error.ttypes.EDAMUserException, userException:
+    except evernote.edam.error.ttypes.EDAMUserException as userException:
       result.userException = userException
-    except evernote.edam.error.ttypes.EDAMSystemException, systemException:
+    except evernote.edam.error.ttypes.EDAMSystemException as systemException:
       result.systemException = systemException
     oprot.writeMessageBegin("getSyncState", TMessageType.REPLY, seqid)
     result.write(oprot)
@@ -7270,9 +7270,9 @@ class Processor(Iface, TProcessor):
     result = getSyncStateWithMetrics_result()
     try:
       result.success = self._handler.getSyncStateWithMetrics(args.authenticationToken, args.clientMetrics)
-    except evernote.edam.error.ttypes.EDAMUserException, userException:
+    except evernote.edam.error.ttypes.EDAMUserException as userException:
       result.userException = userException
-    except evernote.edam.error.ttypes.EDAMSystemException, systemException:
+    except evernote.edam.error.ttypes.EDAMSystemException as systemException:
       result.systemException = systemException
     oprot.writeMessageBegin("getSyncStateWithMetrics", TMessageType.REPLY, seqid)
     result.write(oprot)
@@ -7286,9 +7286,9 @@ class Processor(Iface, TProcessor):
     result = getSyncChunk_result()
     try:
       result.success = self._handler.getSyncChunk(args.authenticationToken, args.afterUSN, args.maxEntries, args.fullSyncOnly)
-    except evernote.edam.error.ttypes.EDAMUserException, userException:
+    except evernote.edam.error.ttypes.EDAMUserException as userException:
       result.userException = userException
-    except evernote.edam.error.ttypes.EDAMSystemException, systemException:
+    except evernote.edam.error.ttypes.EDAMSystemException as systemException:
       result.systemException = systemException
     oprot.writeMessageBegin("getSyncChunk", TMessageType.REPLY, seqid)
     result.write(oprot)
@@ -7302,9 +7302,9 @@ class Processor(Iface, TProcessor):
     result = getFilteredSyncChunk_result()
     try:
       result.success = self._handler.getFilteredSyncChunk(args.authenticationToken, args.afterUSN, args.maxEntries, args.filter)
-    except evernote.edam.error.ttypes.EDAMUserException, userException:
+    except evernote.edam.error.ttypes.EDAMUserException as userException:
       result.userException = userException
-    except evernote.edam.error.ttypes.EDAMSystemException, systemException:
+    except evernote.edam.error.ttypes.EDAMSystemException as systemException:
       result.systemException = systemException
     oprot.writeMessageBegin("getFilteredSyncChunk", TMessageType.REPLY, seqid)
     result.write(oprot)
@@ -7318,11 +7318,11 @@ class Processor(Iface, TProcessor):
     result = getLinkedNotebookSyncState_result()
     try:
       result.success = self._handler.getLinkedNotebookSyncState(args.authenticationToken, args.linkedNotebook)
-    except evernote.edam.error.ttypes.EDAMUserException, userException:
+    except evernote.edam.error.ttypes.EDAMUserException as userException:
       result.userException = userException
-    except evernote.edam.error.ttypes.EDAMSystemException, systemException:
+    except evernote.edam.error.ttypes.EDAMSystemException as systemException:
       result.systemException = systemException
-    except evernote.edam.error.ttypes.EDAMNotFoundException, notFoundException:
+    except evernote.edam.error.ttypes.EDAMNotFoundException as notFoundException:
       result.notFoundException = notFoundException
     oprot.writeMessageBegin("getLinkedNotebookSyncState", TMessageType.REPLY, seqid)
     result.write(oprot)
@@ -7336,11 +7336,11 @@ class Processor(Iface, TProcessor):
     result = getLinkedNotebookSyncChunk_result()
     try:
       result.success = self._handler.getLinkedNotebookSyncChunk(args.authenticationToken, args.linkedNotebook, args.afterUSN, args.maxEntries, args.fullSyncOnly)
-    except evernote.edam.error.ttypes.EDAMUserException, userException:
+    except evernote.edam.error.ttypes.EDAMUserException as userException:
       result.userException = userException
-    except evernote.edam.error.ttypes.EDAMSystemException, systemException:
+    except evernote.edam.error.ttypes.EDAMSystemException as systemException:
       result.systemException = systemException
-    except evernote.edam.error.ttypes.EDAMNotFoundException, notFoundException:
+    except evernote.edam.error.ttypes.EDAMNotFoundException as notFoundException:
       result.notFoundException = notFoundException
     oprot.writeMessageBegin("getLinkedNotebookSyncChunk", TMessageType.REPLY, seqid)
     result.write(oprot)
@@ -7354,9 +7354,9 @@ class Processor(Iface, TProcessor):
     result = listNotebooks_result()
     try:
       result.success = self._handler.listNotebooks(args.authenticationToken)
-    except evernote.edam.error.ttypes.EDAMUserException, userException:
+    except evernote.edam.error.ttypes.EDAMUserException as userException:
       result.userException = userException
-    except evernote.edam.error.ttypes.EDAMSystemException, systemException:
+    except evernote.edam.error.ttypes.EDAMSystemException as systemException:
       result.systemException = systemException
     oprot.writeMessageBegin("listNotebooks", TMessageType.REPLY, seqid)
     result.write(oprot)
@@ -7370,11 +7370,11 @@ class Processor(Iface, TProcessor):
     result = getNotebook_result()
     try:
       result.success = self._handler.getNotebook(args.authenticationToken, args.guid)
-    except evernote.edam.error.ttypes.EDAMUserException, userException:
+    except evernote.edam.error.ttypes.EDAMUserException as userException:
       result.userException = userException
-    except evernote.edam.error.ttypes.EDAMSystemException, systemException:
+    except evernote.edam.error.ttypes.EDAMSystemException as systemException:
       result.systemException = systemException
-    except evernote.edam.error.ttypes.EDAMNotFoundException, notFoundException:
+    except evernote.edam.error.ttypes.EDAMNotFoundException as notFoundException:
       result.notFoundException = notFoundException
     oprot.writeMessageBegin("getNotebook", TMessageType.REPLY, seqid)
     result.write(oprot)
@@ -7388,9 +7388,9 @@ class Processor(Iface, TProcessor):
     result = getDefaultNotebook_result()
     try:
       result.success = self._handler.getDefaultNotebook(args.authenticationToken)
-    except evernote.edam.error.ttypes.EDAMUserException, userException:
+    except evernote.edam.error.ttypes.EDAMUserException as userException:
       result.userException = userException
-    except evernote.edam.error.ttypes.EDAMSystemException, systemException:
+    except evernote.edam.error.ttypes.EDAMSystemException as systemException:
       result.systemException = systemException
     oprot.writeMessageBegin("getDefaultNotebook", TMessageType.REPLY, seqid)
     result.write(oprot)
@@ -7404,9 +7404,9 @@ class Processor(Iface, TProcessor):
     result = createNotebook_result()
     try:
       result.success = self._handler.createNotebook(args.authenticationToken, args.notebook)
-    except evernote.edam.error.ttypes.EDAMUserException, userException:
+    except evernote.edam.error.ttypes.EDAMUserException as userException:
       result.userException = userException
-    except evernote.edam.error.ttypes.EDAMSystemException, systemException:
+    except evernote.edam.error.ttypes.EDAMSystemException as systemException:
       result.systemException = systemException
     oprot.writeMessageBegin("createNotebook", TMessageType.REPLY, seqid)
     result.write(oprot)
@@ -7420,11 +7420,11 @@ class Processor(Iface, TProcessor):
     result = updateNotebook_result()
     try:
       result.success = self._handler.updateNotebook(args.authenticationToken, args.notebook)
-    except evernote.edam.error.ttypes.EDAMUserException, userException:
+    except evernote.edam.error.ttypes.EDAMUserException as userException:
       result.userException = userException
-    except evernote.edam.error.ttypes.EDAMSystemException, systemException:
+    except evernote.edam.error.ttypes.EDAMSystemException as systemException:
       result.systemException = systemException
-    except evernote.edam.error.ttypes.EDAMNotFoundException, notFoundException:
+    except evernote.edam.error.ttypes.EDAMNotFoundException as notFoundException:
       result.notFoundException = notFoundException
     oprot.writeMessageBegin("updateNotebook", TMessageType.REPLY, seqid)
     result.write(oprot)
@@ -7438,11 +7438,11 @@ class Processor(Iface, TProcessor):
     result = expungeNotebook_result()
     try:
       result.success = self._handler.expungeNotebook(args.authenticationToken, args.guid)
-    except evernote.edam.error.ttypes.EDAMUserException, userException:
+    except evernote.edam.error.ttypes.EDAMUserException as userException:
       result.userException = userException
-    except evernote.edam.error.ttypes.EDAMSystemException, systemException:
+    except evernote.edam.error.ttypes.EDAMSystemException as systemException:
       result.systemException = systemException
-    except evernote.edam.error.ttypes.EDAMNotFoundException, notFoundException:
+    except evernote.edam.error.ttypes.EDAMNotFoundException as notFoundException:
       result.notFoundException = notFoundException
     oprot.writeMessageBegin("expungeNotebook", TMessageType.REPLY, seqid)
     result.write(oprot)
@@ -7456,9 +7456,9 @@ class Processor(Iface, TProcessor):
     result = listTags_result()
     try:
       result.success = self._handler.listTags(args.authenticationToken)
-    except evernote.edam.error.ttypes.EDAMUserException, userException:
+    except evernote.edam.error.ttypes.EDAMUserException as userException:
       result.userException = userException
-    except evernote.edam.error.ttypes.EDAMSystemException, systemException:
+    except evernote.edam.error.ttypes.EDAMSystemException as systemException:
       result.systemException = systemException
     oprot.writeMessageBegin("listTags", TMessageType.REPLY, seqid)
     result.write(oprot)
@@ -7472,11 +7472,11 @@ class Processor(Iface, TProcessor):
     result = listTagsByNotebook_result()
     try:
       result.success = self._handler.listTagsByNotebook(args.authenticationToken, args.notebookGuid)
-    except evernote.edam.error.ttypes.EDAMUserException, userException:
+    except evernote.edam.error.ttypes.EDAMUserException as userException:
       result.userException = userException
-    except evernote.edam.error.ttypes.EDAMSystemException, systemException:
+    except evernote.edam.error.ttypes.EDAMSystemException as systemException:
       result.systemException = systemException
-    except evernote.edam.error.ttypes.EDAMNotFoundException, notFoundException:
+    except evernote.edam.error.ttypes.EDAMNotFoundException as notFoundException:
       result.notFoundException = notFoundException
     oprot.writeMessageBegin("listTagsByNotebook", TMessageType.REPLY, seqid)
     result.write(oprot)
@@ -7490,11 +7490,11 @@ class Processor(Iface, TProcessor):
     result = getTag_result()
     try:
       result.success = self._handler.getTag(args.authenticationToken, args.guid)
-    except evernote.edam.error.ttypes.EDAMUserException, userException:
+    except evernote.edam.error.ttypes.EDAMUserException as userException:
       result.userException = userException
-    except evernote.edam.error.ttypes.EDAMSystemException, systemException:
+    except evernote.edam.error.ttypes.EDAMSystemException as systemException:
       result.systemException = systemException
-    except evernote.edam.error.ttypes.EDAMNotFoundException, notFoundException:
+    except evernote.edam.error.ttypes.EDAMNotFoundException as notFoundException:
       result.notFoundException = notFoundException
     oprot.writeMessageBegin("getTag", TMessageType.REPLY, seqid)
     result.write(oprot)
@@ -7508,11 +7508,11 @@ class Processor(Iface, TProcessor):
     result = createTag_result()
     try:
       result.success = self._handler.createTag(args.authenticationToken, args.tag)
-    except evernote.edam.error.ttypes.EDAMUserException, userException:
+    except evernote.edam.error.ttypes.EDAMUserException as userException:
       result.userException = userException
-    except evernote.edam.error.ttypes.EDAMSystemException, systemException:
+    except evernote.edam.error.ttypes.EDAMSystemException as systemException:
       result.systemException = systemException
-    except evernote.edam.error.ttypes.EDAMNotFoundException, notFoundException:
+    except evernote.edam.error.ttypes.EDAMNotFoundException as notFoundException:
       result.notFoundException = notFoundException
     oprot.writeMessageBegin("createTag", TMessageType.REPLY, seqid)
     result.write(oprot)
@@ -7526,11 +7526,11 @@ class Processor(Iface, TProcessor):
     result = updateTag_result()
     try:
       result.success = self._handler.updateTag(args.authenticationToken, args.tag)
-    except evernote.edam.error.ttypes.EDAMUserException, userException:
+    except evernote.edam.error.ttypes.EDAMUserException as userException:
       result.userException = userException
-    except evernote.edam.error.ttypes.EDAMSystemException, systemException:
+    except evernote.edam.error.ttypes.EDAMSystemException as systemException:
       result.systemException = systemException
-    except evernote.edam.error.ttypes.EDAMNotFoundException, notFoundException:
+    except evernote.edam.error.ttypes.EDAMNotFoundException as notFoundException:
       result.notFoundException = notFoundException
     oprot.writeMessageBegin("updateTag", TMessageType.REPLY, seqid)
     result.write(oprot)
@@ -7544,11 +7544,11 @@ class Processor(Iface, TProcessor):
     result = untagAll_result()
     try:
       self._handler.untagAll(args.authenticationToken, args.guid)
-    except evernote.edam.error.ttypes.EDAMUserException, userException:
+    except evernote.edam.error.ttypes.EDAMUserException as userException:
       result.userException = userException
-    except evernote.edam.error.ttypes.EDAMSystemException, systemException:
+    except evernote.edam.error.ttypes.EDAMSystemException as systemException:
       result.systemException = systemException
-    except evernote.edam.error.ttypes.EDAMNotFoundException, notFoundException:
+    except evernote.edam.error.ttypes.EDAMNotFoundException as notFoundException:
       result.notFoundException = notFoundException
     oprot.writeMessageBegin("untagAll", TMessageType.REPLY, seqid)
     result.write(oprot)
@@ -7562,11 +7562,11 @@ class Processor(Iface, TProcessor):
     result = expungeTag_result()
     try:
       result.success = self._handler.expungeTag(args.authenticationToken, args.guid)
-    except evernote.edam.error.ttypes.EDAMUserException, userException:
+    except evernote.edam.error.ttypes.EDAMUserException as userException:
       result.userException = userException
-    except evernote.edam.error.ttypes.EDAMSystemException, systemException:
+    except evernote.edam.error.ttypes.EDAMSystemException as systemException:
       result.systemException = systemException
-    except evernote.edam.error.ttypes.EDAMNotFoundException, notFoundException:
+    except evernote.edam.error.ttypes.EDAMNotFoundException as notFoundException:
       result.notFoundException = notFoundException
     oprot.writeMessageBegin("expungeTag", TMessageType.REPLY, seqid)
     result.write(oprot)
@@ -7580,9 +7580,9 @@ class Processor(Iface, TProcessor):
     result = listSearches_result()
     try:
       result.success = self._handler.listSearches(args.authenticationToken)
-    except evernote.edam.error.ttypes.EDAMUserException, userException:
+    except evernote.edam.error.ttypes.EDAMUserException as userException:
       result.userException = userException
-    except evernote.edam.error.ttypes.EDAMSystemException, systemException:
+    except evernote.edam.error.ttypes.EDAMSystemException as systemException:
       result.systemException = systemException
     oprot.writeMessageBegin("listSearches", TMessageType.REPLY, seqid)
     result.write(oprot)
@@ -7596,11 +7596,11 @@ class Processor(Iface, TProcessor):
     result = getSearch_result()
     try:
       result.success = self._handler.getSearch(args.authenticationToken, args.guid)
-    except evernote.edam.error.ttypes.EDAMUserException, userException:
+    except evernote.edam.error.ttypes.EDAMUserException as userException:
       result.userException = userException
-    except evernote.edam.error.ttypes.EDAMSystemException, systemException:
+    except evernote.edam.error.ttypes.EDAMSystemException as systemException:
       result.systemException = systemException
-    except evernote.edam.error.ttypes.EDAMNotFoundException, notFoundException:
+    except evernote.edam.error.ttypes.EDAMNotFoundException as notFoundException:
       result.notFoundException = notFoundException
     oprot.writeMessageBegin("getSearch", TMessageType.REPLY, seqid)
     result.write(oprot)
@@ -7614,9 +7614,9 @@ class Processor(Iface, TProcessor):
     result = createSearch_result()
     try:
       result.success = self._handler.createSearch(args.authenticationToken, args.search)
-    except evernote.edam.error.ttypes.EDAMUserException, userException:
+    except evernote.edam.error.ttypes.EDAMUserException as userException:
       result.userException = userException
-    except evernote.edam.error.ttypes.EDAMSystemException, systemException:
+    except evernote.edam.error.ttypes.EDAMSystemException as systemException:
       result.systemException = systemException
     oprot.writeMessageBegin("createSearch", TMessageType.REPLY, seqid)
     result.write(oprot)
@@ -7630,11 +7630,11 @@ class Processor(Iface, TProcessor):
     result = updateSearch_result()
     try:
       result.success = self._handler.updateSearch(args.authenticationToken, args.search)
-    except evernote.edam.error.ttypes.EDAMUserException, userException:
+    except evernote.edam.error.ttypes.EDAMUserException as userException:
       result.userException = userException
-    except evernote.edam.error.ttypes.EDAMSystemException, systemException:
+    except evernote.edam.error.ttypes.EDAMSystemException as systemException:
       result.systemException = systemException
-    except evernote.edam.error.ttypes.EDAMNotFoundException, notFoundException:
+    except evernote.edam.error.ttypes.EDAMNotFoundException as notFoundException:
       result.notFoundException = notFoundException
     oprot.writeMessageBegin("updateSearch", TMessageType.REPLY, seqid)
     result.write(oprot)
@@ -7648,11 +7648,11 @@ class Processor(Iface, TProcessor):
     result = expungeSearch_result()
     try:
       result.success = self._handler.expungeSearch(args.authenticationToken, args.guid)
-    except evernote.edam.error.ttypes.EDAMUserException, userException:
+    except evernote.edam.error.ttypes.EDAMUserException as userException:
       result.userException = userException
-    except evernote.edam.error.ttypes.EDAMSystemException, systemException:
+    except evernote.edam.error.ttypes.EDAMSystemException as systemException:
       result.systemException = systemException
-    except evernote.edam.error.ttypes.EDAMNotFoundException, notFoundException:
+    except evernote.edam.error.ttypes.EDAMNotFoundException as notFoundException:
       result.notFoundException = notFoundException
     oprot.writeMessageBegin("expungeSearch", TMessageType.REPLY, seqid)
     result.write(oprot)
@@ -7666,11 +7666,11 @@ class Processor(Iface, TProcessor):
     result = findNotes_result()
     try:
       result.success = self._handler.findNotes(args.authenticationToken, args.filter, args.offset, args.maxNotes)
-    except evernote.edam.error.ttypes.EDAMUserException, userException:
+    except evernote.edam.error.ttypes.EDAMUserException as userException:
       result.userException = userException
-    except evernote.edam.error.ttypes.EDAMSystemException, systemException:
+    except evernote.edam.error.ttypes.EDAMSystemException as systemException:
       result.systemException = systemException
-    except evernote.edam.error.ttypes.EDAMNotFoundException, notFoundException:
+    except evernote.edam.error.ttypes.EDAMNotFoundException as notFoundException:
       result.notFoundException = notFoundException
     oprot.writeMessageBegin("findNotes", TMessageType.REPLY, seqid)
     result.write(oprot)
@@ -7684,11 +7684,11 @@ class Processor(Iface, TProcessor):
     result = findNoteOffset_result()
     try:
       result.success = self._handler.findNoteOffset(args.authenticationToken, args.filter, args.guid)
-    except evernote.edam.error.ttypes.EDAMUserException, userException:
+    except evernote.edam.error.ttypes.EDAMUserException as userException:
       result.userException = userException
-    except evernote.edam.error.ttypes.EDAMSystemException, systemException:
+    except evernote.edam.error.ttypes.EDAMSystemException as systemException:
       result.systemException = systemException
-    except evernote.edam.error.ttypes.EDAMNotFoundException, notFoundException:
+    except evernote.edam.error.ttypes.EDAMNotFoundException as notFoundException:
       result.notFoundException = notFoundException
     oprot.writeMessageBegin("findNoteOffset", TMessageType.REPLY, seqid)
     result.write(oprot)
@@ -7702,11 +7702,11 @@ class Processor(Iface, TProcessor):
     result = findNotesMetadata_result()
     try:
       result.success = self._handler.findNotesMetadata(args.authenticationToken, args.filter, args.offset, args.maxNotes, args.resultSpec)
-    except evernote.edam.error.ttypes.EDAMUserException, userException:
+    except evernote.edam.error.ttypes.EDAMUserException as userException:
       result.userException = userException
-    except evernote.edam.error.ttypes.EDAMSystemException, systemException:
+    except evernote.edam.error.ttypes.EDAMSystemException as systemException:
       result.systemException = systemException
-    except evernote.edam.error.ttypes.EDAMNotFoundException, notFoundException:
+    except evernote.edam.error.ttypes.EDAMNotFoundException as notFoundException:
       result.notFoundException = notFoundException
     oprot.writeMessageBegin("findNotesMetadata", TMessageType.REPLY, seqid)
     result.write(oprot)
@@ -7720,11 +7720,11 @@ class Processor(Iface, TProcessor):
     result = findNoteCounts_result()
     try:
       result.success = self._handler.findNoteCounts(args.authenticationToken, args.filter, args.withTrash)
-    except evernote.edam.error.ttypes.EDAMUserException, userException:
+    except evernote.edam.error.ttypes.EDAMUserException as userException:
       result.userException = userException
-    except evernote.edam.error.ttypes.EDAMSystemException, systemException:
+    except evernote.edam.error.ttypes.EDAMSystemException as systemException:
       result.systemException = systemException
-    except evernote.edam.error.ttypes.EDAMNotFoundException, notFoundException:
+    except evernote.edam.error.ttypes.EDAMNotFoundException as notFoundException:
       result.notFoundException = notFoundException
     oprot.writeMessageBegin("findNoteCounts", TMessageType.REPLY, seqid)
     result.write(oprot)
@@ -7738,11 +7738,11 @@ class Processor(Iface, TProcessor):
     result = getNote_result()
     try:
       result.success = self._handler.getNote(args.authenticationToken, args.guid, args.withContent, args.withResourcesData, args.withResourcesRecognition, args.withResourcesAlternateData)
-    except evernote.edam.error.ttypes.EDAMUserException, userException:
+    except evernote.edam.error.ttypes.EDAMUserException as userException:
       result.userException = userException
-    except evernote.edam.error.ttypes.EDAMSystemException, systemException:
+    except evernote.edam.error.ttypes.EDAMSystemException as systemException:
       result.systemException = systemException
-    except evernote.edam.error.ttypes.EDAMNotFoundException, notFoundException:
+    except evernote.edam.error.ttypes.EDAMNotFoundException as notFoundException:
       result.notFoundException = notFoundException
     oprot.writeMessageBegin("getNote", TMessageType.REPLY, seqid)
     result.write(oprot)
@@ -7756,11 +7756,11 @@ class Processor(Iface, TProcessor):
     result = getNoteApplicationData_result()
     try:
       result.success = self._handler.getNoteApplicationData(args.authenticationToken, args.guid)
-    except evernote.edam.error.ttypes.EDAMUserException, userException:
+    except evernote.edam.error.ttypes.EDAMUserException as userException:
       result.userException = userException
-    except evernote.edam.error.ttypes.EDAMSystemException, systemException:
+    except evernote.edam.error.ttypes.EDAMSystemException as systemException:
       result.systemException = systemException
-    except evernote.edam.error.ttypes.EDAMNotFoundException, notFoundException:
+    except evernote.edam.error.ttypes.EDAMNotFoundException as notFoundException:
       result.notFoundException = notFoundException
     oprot.writeMessageBegin("getNoteApplicationData", TMessageType.REPLY, seqid)
     result.write(oprot)
@@ -7774,11 +7774,11 @@ class Processor(Iface, TProcessor):
     result = getNoteApplicationDataEntry_result()
     try:
       result.success = self._handler.getNoteApplicationDataEntry(args.authenticationToken, args.guid, args.key)
-    except evernote.edam.error.ttypes.EDAMUserException, userException:
+    except evernote.edam.error.ttypes.EDAMUserException as userException:
       result.userException = userException
-    except evernote.edam.error.ttypes.EDAMSystemException, systemException:
+    except evernote.edam.error.ttypes.EDAMSystemException as systemException:
       result.systemException = systemException
-    except evernote.edam.error.ttypes.EDAMNotFoundException, notFoundException:
+    except evernote.edam.error.ttypes.EDAMNotFoundException as notFoundException:
       result.notFoundException = notFoundException
     oprot.writeMessageBegin("getNoteApplicationDataEntry", TMessageType.REPLY, seqid)
     result.write(oprot)
@@ -7792,11 +7792,11 @@ class Processor(Iface, TProcessor):
     result = setNoteApplicationDataEntry_result()
     try:
       result.success = self._handler.setNoteApplicationDataEntry(args.authenticationToken, args.guid, args.key, args.value)
-    except evernote.edam.error.ttypes.EDAMUserException, userException:
+    except evernote.edam.error.ttypes.EDAMUserException as userException:
       result.userException = userException
-    except evernote.edam.error.ttypes.EDAMSystemException, systemException:
+    except evernote.edam.error.ttypes.EDAMSystemException as systemException:
       result.systemException = systemException
-    except evernote.edam.error.ttypes.EDAMNotFoundException, notFoundException:
+    except evernote.edam.error.ttypes.EDAMNotFoundException as notFoundException:
       result.notFoundException = notFoundException
     oprot.writeMessageBegin("setNoteApplicationDataEntry", TMessageType.REPLY, seqid)
     result.write(oprot)
@@ -7810,11 +7810,11 @@ class Processor(Iface, TProcessor):
     result = unsetNoteApplicationDataEntry_result()
     try:
       result.success = self._handler.unsetNoteApplicationDataEntry(args.authenticationToken, args.guid, args.key)
-    except evernote.edam.error.ttypes.EDAMUserException, userException:
+    except evernote.edam.error.ttypes.EDAMUserException as userException:
       result.userException = userException
-    except evernote.edam.error.ttypes.EDAMSystemException, systemException:
+    except evernote.edam.error.ttypes.EDAMSystemException as systemException:
       result.systemException = systemException
-    except evernote.edam.error.ttypes.EDAMNotFoundException, notFoundException:
+    except evernote.edam.error.ttypes.EDAMNotFoundException as notFoundException:
       result.notFoundException = notFoundException
     oprot.writeMessageBegin("unsetNoteApplicationDataEntry", TMessageType.REPLY, seqid)
     result.write(oprot)
@@ -7828,11 +7828,11 @@ class Processor(Iface, TProcessor):
     result = getNoteContent_result()
     try:
       result.success = self._handler.getNoteContent(args.authenticationToken, args.guid)
-    except evernote.edam.error.ttypes.EDAMUserException, userException:
+    except evernote.edam.error.ttypes.EDAMUserException as userException:
       result.userException = userException
-    except evernote.edam.error.ttypes.EDAMSystemException, systemException:
+    except evernote.edam.error.ttypes.EDAMSystemException as systemException:
       result.systemException = systemException
-    except evernote.edam.error.ttypes.EDAMNotFoundException, notFoundException:
+    except evernote.edam.error.ttypes.EDAMNotFoundException as notFoundException:
       result.notFoundException = notFoundException
     oprot.writeMessageBegin("getNoteContent", TMessageType.REPLY, seqid)
     result.write(oprot)
@@ -7846,11 +7846,11 @@ class Processor(Iface, TProcessor):
     result = getNoteSearchText_result()
     try:
       result.success = self._handler.getNoteSearchText(args.authenticationToken, args.guid, args.noteOnly, args.tokenizeForIndexing)
-    except evernote.edam.error.ttypes.EDAMUserException, userException:
+    except evernote.edam.error.ttypes.EDAMUserException as userException:
       result.userException = userException
-    except evernote.edam.error.ttypes.EDAMSystemException, systemException:
+    except evernote.edam.error.ttypes.EDAMSystemException as systemException:
       result.systemException = systemException
-    except evernote.edam.error.ttypes.EDAMNotFoundException, notFoundException:
+    except evernote.edam.error.ttypes.EDAMNotFoundException as notFoundException:
       result.notFoundException = notFoundException
     oprot.writeMessageBegin("getNoteSearchText", TMessageType.REPLY, seqid)
     result.write(oprot)
@@ -7864,11 +7864,11 @@ class Processor(Iface, TProcessor):
     result = getResourceSearchText_result()
     try:
       result.success = self._handler.getResourceSearchText(args.authenticationToken, args.guid)
-    except evernote.edam.error.ttypes.EDAMUserException, userException:
+    except evernote.edam.error.ttypes.EDAMUserException as userException:
       result.userException = userException
-    except evernote.edam.error.ttypes.EDAMSystemException, systemException:
+    except evernote.edam.error.ttypes.EDAMSystemException as systemException:
       result.systemException = systemException
-    except evernote.edam.error.ttypes.EDAMNotFoundException, notFoundException:
+    except evernote.edam.error.ttypes.EDAMNotFoundException as notFoundException:
       result.notFoundException = notFoundException
     oprot.writeMessageBegin("getResourceSearchText", TMessageType.REPLY, seqid)
     result.write(oprot)
@@ -7882,11 +7882,11 @@ class Processor(Iface, TProcessor):
     result = getNoteTagNames_result()
     try:
       result.success = self._handler.getNoteTagNames(args.authenticationToken, args.guid)
-    except evernote.edam.error.ttypes.EDAMUserException, userException:
+    except evernote.edam.error.ttypes.EDAMUserException as userException:
       result.userException = userException
-    except evernote.edam.error.ttypes.EDAMSystemException, systemException:
+    except evernote.edam.error.ttypes.EDAMSystemException as systemException:
       result.systemException = systemException
-    except evernote.edam.error.ttypes.EDAMNotFoundException, notFoundException:
+    except evernote.edam.error.ttypes.EDAMNotFoundException as notFoundException:
       result.notFoundException = notFoundException
     oprot.writeMessageBegin("getNoteTagNames", TMessageType.REPLY, seqid)
     result.write(oprot)
@@ -7900,11 +7900,11 @@ class Processor(Iface, TProcessor):
     result = createNote_result()
     try:
       result.success = self._handler.createNote(args.authenticationToken, args.note)
-    except evernote.edam.error.ttypes.EDAMUserException, userException:
+    except evernote.edam.error.ttypes.EDAMUserException as userException:
       result.userException = userException
-    except evernote.edam.error.ttypes.EDAMSystemException, systemException:
+    except evernote.edam.error.ttypes.EDAMSystemException as systemException:
       result.systemException = systemException
-    except evernote.edam.error.ttypes.EDAMNotFoundException, notFoundException:
+    except evernote.edam.error.ttypes.EDAMNotFoundException as notFoundException:
       result.notFoundException = notFoundException
     oprot.writeMessageBegin("createNote", TMessageType.REPLY, seqid)
     result.write(oprot)
@@ -7918,11 +7918,11 @@ class Processor(Iface, TProcessor):
     result = updateNote_result()
     try:
       result.success = self._handler.updateNote(args.authenticationToken, args.note)
-    except evernote.edam.error.ttypes.EDAMUserException, userException:
+    except evernote.edam.error.ttypes.EDAMUserException as userException:
       result.userException = userException
-    except evernote.edam.error.ttypes.EDAMSystemException, systemException:
+    except evernote.edam.error.ttypes.EDAMSystemException as systemException:
       result.systemException = systemException
-    except evernote.edam.error.ttypes.EDAMNotFoundException, notFoundException:
+    except evernote.edam.error.ttypes.EDAMNotFoundException as notFoundException:
       result.notFoundException = notFoundException
     oprot.writeMessageBegin("updateNote", TMessageType.REPLY, seqid)
     result.write(oprot)
@@ -7936,11 +7936,11 @@ class Processor(Iface, TProcessor):
     result = deleteNote_result()
     try:
       result.success = self._handler.deleteNote(args.authenticationToken, args.guid)
-    except evernote.edam.error.ttypes.EDAMUserException, userException:
+    except evernote.edam.error.ttypes.EDAMUserException as userException:
       result.userException = userException
-    except evernote.edam.error.ttypes.EDAMSystemException, systemException:
+    except evernote.edam.error.ttypes.EDAMSystemException as systemException:
       result.systemException = systemException
-    except evernote.edam.error.ttypes.EDAMNotFoundException, notFoundException:
+    except evernote.edam.error.ttypes.EDAMNotFoundException as notFoundException:
       result.notFoundException = notFoundException
     oprot.writeMessageBegin("deleteNote", TMessageType.REPLY, seqid)
     result.write(oprot)
@@ -7954,11 +7954,11 @@ class Processor(Iface, TProcessor):
     result = expungeNote_result()
     try:
       result.success = self._handler.expungeNote(args.authenticationToken, args.guid)
-    except evernote.edam.error.ttypes.EDAMUserException, userException:
+    except evernote.edam.error.ttypes.EDAMUserException as userException:
       result.userException = userException
-    except evernote.edam.error.ttypes.EDAMSystemException, systemException:
+    except evernote.edam.error.ttypes.EDAMSystemException as systemException:
       result.systemException = systemException
-    except evernote.edam.error.ttypes.EDAMNotFoundException, notFoundException:
+    except evernote.edam.error.ttypes.EDAMNotFoundException as notFoundException:
       result.notFoundException = notFoundException
     oprot.writeMessageBegin("expungeNote", TMessageType.REPLY, seqid)
     result.write(oprot)
@@ -7972,11 +7972,11 @@ class Processor(Iface, TProcessor):
     result = expungeNotes_result()
     try:
       result.success = self._handler.expungeNotes(args.authenticationToken, args.noteGuids)
-    except evernote.edam.error.ttypes.EDAMUserException, userException:
+    except evernote.edam.error.ttypes.EDAMUserException as userException:
       result.userException = userException
-    except evernote.edam.error.ttypes.EDAMSystemException, systemException:
+    except evernote.edam.error.ttypes.EDAMSystemException as systemException:
       result.systemException = systemException
-    except evernote.edam.error.ttypes.EDAMNotFoundException, notFoundException:
+    except evernote.edam.error.ttypes.EDAMNotFoundException as notFoundException:
       result.notFoundException = notFoundException
     oprot.writeMessageBegin("expungeNotes", TMessageType.REPLY, seqid)
     result.write(oprot)
@@ -7990,9 +7990,9 @@ class Processor(Iface, TProcessor):
     result = expungeInactiveNotes_result()
     try:
       result.success = self._handler.expungeInactiveNotes(args.authenticationToken)
-    except evernote.edam.error.ttypes.EDAMUserException, userException:
+    except evernote.edam.error.ttypes.EDAMUserException as userException:
       result.userException = userException
-    except evernote.edam.error.ttypes.EDAMSystemException, systemException:
+    except evernote.edam.error.ttypes.EDAMSystemException as systemException:
       result.systemException = systemException
     oprot.writeMessageBegin("expungeInactiveNotes", TMessageType.REPLY, seqid)
     result.write(oprot)
@@ -8006,11 +8006,11 @@ class Processor(Iface, TProcessor):
     result = copyNote_result()
     try:
       result.success = self._handler.copyNote(args.authenticationToken, args.noteGuid, args.toNotebookGuid)
-    except evernote.edam.error.ttypes.EDAMUserException, userException:
+    except evernote.edam.error.ttypes.EDAMUserException as userException:
       result.userException = userException
-    except evernote.edam.error.ttypes.EDAMSystemException, systemException:
+    except evernote.edam.error.ttypes.EDAMSystemException as systemException:
       result.systemException = systemException
-    except evernote.edam.error.ttypes.EDAMNotFoundException, notFoundException:
+    except evernote.edam.error.ttypes.EDAMNotFoundException as notFoundException:
       result.notFoundException = notFoundException
     oprot.writeMessageBegin("copyNote", TMessageType.REPLY, seqid)
     result.write(oprot)
@@ -8024,11 +8024,11 @@ class Processor(Iface, TProcessor):
     result = listNoteVersions_result()
     try:
       result.success = self._handler.listNoteVersions(args.authenticationToken, args.noteGuid)
-    except evernote.edam.error.ttypes.EDAMUserException, userException:
+    except evernote.edam.error.ttypes.EDAMUserException as userException:
       result.userException = userException
-    except evernote.edam.error.ttypes.EDAMSystemException, systemException:
+    except evernote.edam.error.ttypes.EDAMSystemException as systemException:
       result.systemException = systemException
-    except evernote.edam.error.ttypes.EDAMNotFoundException, notFoundException:
+    except evernote.edam.error.ttypes.EDAMNotFoundException as notFoundException:
       result.notFoundException = notFoundException
     oprot.writeMessageBegin("listNoteVersions", TMessageType.REPLY, seqid)
     result.write(oprot)
@@ -8042,11 +8042,11 @@ class Processor(Iface, TProcessor):
     result = getNoteVersion_result()
     try:
       result.success = self._handler.getNoteVersion(args.authenticationToken, args.noteGuid, args.updateSequenceNum, args.withResourcesData, args.withResourcesRecognition, args.withResourcesAlternateData)
-    except evernote.edam.error.ttypes.EDAMUserException, userException:
+    except evernote.edam.error.ttypes.EDAMUserException as userException:
       result.userException = userException
-    except evernote.edam.error.ttypes.EDAMSystemException, systemException:
+    except evernote.edam.error.ttypes.EDAMSystemException as systemException:
       result.systemException = systemException
-    except evernote.edam.error.ttypes.EDAMNotFoundException, notFoundException:
+    except evernote.edam.error.ttypes.EDAMNotFoundException as notFoundException:
       result.notFoundException = notFoundException
     oprot.writeMessageBegin("getNoteVersion", TMessageType.REPLY, seqid)
     result.write(oprot)
@@ -8060,11 +8060,11 @@ class Processor(Iface, TProcessor):
     result = getResource_result()
     try:
       result.success = self._handler.getResource(args.authenticationToken, args.guid, args.withData, args.withRecognition, args.withAttributes, args.withAlternateData)
-    except evernote.edam.error.ttypes.EDAMUserException, userException:
+    except evernote.edam.error.ttypes.EDAMUserException as userException:
       result.userException = userException
-    except evernote.edam.error.ttypes.EDAMSystemException, systemException:
+    except evernote.edam.error.ttypes.EDAMSystemException as systemException:
       result.systemException = systemException
-    except evernote.edam.error.ttypes.EDAMNotFoundException, notFoundException:
+    except evernote.edam.error.ttypes.EDAMNotFoundException as notFoundException:
       result.notFoundException = notFoundException
     oprot.writeMessageBegin("getResource", TMessageType.REPLY, seqid)
     result.write(oprot)
@@ -8078,11 +8078,11 @@ class Processor(Iface, TProcessor):
     result = getResourceApplicationData_result()
     try:
       result.success = self._handler.getResourceApplicationData(args.authenticationToken, args.guid)
-    except evernote.edam.error.ttypes.EDAMUserException, userException:
+    except evernote.edam.error.ttypes.EDAMUserException as userException:
       result.userException = userException
-    except evernote.edam.error.ttypes.EDAMSystemException, systemException:
+    except evernote.edam.error.ttypes.EDAMSystemException as systemException:
       result.systemException = systemException
-    except evernote.edam.error.ttypes.EDAMNotFoundException, notFoundException:
+    except evernote.edam.error.ttypes.EDAMNotFoundException as notFoundException:
       result.notFoundException = notFoundException
     oprot.writeMessageBegin("getResourceApplicationData", TMessageType.REPLY, seqid)
     result.write(oprot)
@@ -8096,11 +8096,11 @@ class Processor(Iface, TProcessor):
     result = getResourceApplicationDataEntry_result()
     try:
       result.success = self._handler.getResourceApplicationDataEntry(args.authenticationToken, args.guid, args.key)
-    except evernote.edam.error.ttypes.EDAMUserException, userException:
+    except evernote.edam.error.ttypes.EDAMUserException as userException:
       result.userException = userException
-    except evernote.edam.error.ttypes.EDAMSystemException, systemException:
+    except evernote.edam.error.ttypes.EDAMSystemException as systemException:
       result.systemException = systemException
-    except evernote.edam.error.ttypes.EDAMNotFoundException, notFoundException:
+    except evernote.edam.error.ttypes.EDAMNotFoundException as notFoundException:
       result.notFoundException = notFoundException
     oprot.writeMessageBegin("getResourceApplicationDataEntry", TMessageType.REPLY, seqid)
     result.write(oprot)
@@ -8114,11 +8114,11 @@ class Processor(Iface, TProcessor):
     result = setResourceApplicationDataEntry_result()
     try:
       result.success = self._handler.setResourceApplicationDataEntry(args.authenticationToken, args.guid, args.key, args.value)
-    except evernote.edam.error.ttypes.EDAMUserException, userException:
+    except evernote.edam.error.ttypes.EDAMUserException as userException:
       result.userException = userException
-    except evernote.edam.error.ttypes.EDAMSystemException, systemException:
+    except evernote.edam.error.ttypes.EDAMSystemException as systemException:
       result.systemException = systemException
-    except evernote.edam.error.ttypes.EDAMNotFoundException, notFoundException:
+    except evernote.edam.error.ttypes.EDAMNotFoundException as notFoundException:
       result.notFoundException = notFoundException
     oprot.writeMessageBegin("setResourceApplicationDataEntry", TMessageType.REPLY, seqid)
     result.write(oprot)
@@ -8132,11 +8132,11 @@ class Processor(Iface, TProcessor):
     result = unsetResourceApplicationDataEntry_result()
     try:
       result.success = self._handler.unsetResourceApplicationDataEntry(args.authenticationToken, args.guid, args.key)
-    except evernote.edam.error.ttypes.EDAMUserException, userException:
+    except evernote.edam.error.ttypes.EDAMUserException as userException:
       result.userException = userException
-    except evernote.edam.error.ttypes.EDAMSystemException, systemException:
+    except evernote.edam.error.ttypes.EDAMSystemException as systemException:
       result.systemException = systemException
-    except evernote.edam.error.ttypes.EDAMNotFoundException, notFoundException:
+    except evernote.edam.error.ttypes.EDAMNotFoundException as notFoundException:
       result.notFoundException = notFoundException
     oprot.writeMessageBegin("unsetResourceApplicationDataEntry", TMessageType.REPLY, seqid)
     result.write(oprot)
@@ -8150,11 +8150,11 @@ class Processor(Iface, TProcessor):
     result = updateResource_result()
     try:
       result.success = self._handler.updateResource(args.authenticationToken, args.resource)
-    except evernote.edam.error.ttypes.EDAMUserException, userException:
+    except evernote.edam.error.ttypes.EDAMUserException as userException:
       result.userException = userException
-    except evernote.edam.error.ttypes.EDAMSystemException, systemException:
+    except evernote.edam.error.ttypes.EDAMSystemException as systemException:
       result.systemException = systemException
-    except evernote.edam.error.ttypes.EDAMNotFoundException, notFoundException:
+    except evernote.edam.error.ttypes.EDAMNotFoundException as notFoundException:
       result.notFoundException = notFoundException
     oprot.writeMessageBegin("updateResource", TMessageType.REPLY, seqid)
     result.write(oprot)
@@ -8168,11 +8168,11 @@ class Processor(Iface, TProcessor):
     result = getResourceData_result()
     try:
       result.success = self._handler.getResourceData(args.authenticationToken, args.guid)
-    except evernote.edam.error.ttypes.EDAMUserException, userException:
+    except evernote.edam.error.ttypes.EDAMUserException as userException:
       result.userException = userException
-    except evernote.edam.error.ttypes.EDAMSystemException, systemException:
+    except evernote.edam.error.ttypes.EDAMSystemException as systemException:
       result.systemException = systemException
-    except evernote.edam.error.ttypes.EDAMNotFoundException, notFoundException:
+    except evernote.edam.error.ttypes.EDAMNotFoundException as notFoundException:
       result.notFoundException = notFoundException
     oprot.writeMessageBegin("getResourceData", TMessageType.REPLY, seqid)
     result.write(oprot)
@@ -8186,11 +8186,11 @@ class Processor(Iface, TProcessor):
     result = getResourceByHash_result()
     try:
       result.success = self._handler.getResourceByHash(args.authenticationToken, args.noteGuid, args.contentHash, args.withData, args.withRecognition, args.withAlternateData)
-    except evernote.edam.error.ttypes.EDAMUserException, userException:
+    except evernote.edam.error.ttypes.EDAMUserException as userException:
       result.userException = userException
-    except evernote.edam.error.ttypes.EDAMSystemException, systemException:
+    except evernote.edam.error.ttypes.EDAMSystemException as systemException:
       result.systemException = systemException
-    except evernote.edam.error.ttypes.EDAMNotFoundException, notFoundException:
+    except evernote.edam.error.ttypes.EDAMNotFoundException as notFoundException:
       result.notFoundException = notFoundException
     oprot.writeMessageBegin("getResourceByHash", TMessageType.REPLY, seqid)
     result.write(oprot)
@@ -8204,11 +8204,11 @@ class Processor(Iface, TProcessor):
     result = getResourceRecognition_result()
     try:
       result.success = self._handler.getResourceRecognition(args.authenticationToken, args.guid)
-    except evernote.edam.error.ttypes.EDAMUserException, userException:
+    except evernote.edam.error.ttypes.EDAMUserException as userException:
       result.userException = userException
-    except evernote.edam.error.ttypes.EDAMSystemException, systemException:
+    except evernote.edam.error.ttypes.EDAMSystemException as systemException:
       result.systemException = systemException
-    except evernote.edam.error.ttypes.EDAMNotFoundException, notFoundException:
+    except evernote.edam.error.ttypes.EDAMNotFoundException as notFoundException:
       result.notFoundException = notFoundException
     oprot.writeMessageBegin("getResourceRecognition", TMessageType.REPLY, seqid)
     result.write(oprot)
@@ -8222,11 +8222,11 @@ class Processor(Iface, TProcessor):
     result = getResourceAlternateData_result()
     try:
       result.success = self._handler.getResourceAlternateData(args.authenticationToken, args.guid)
-    except evernote.edam.error.ttypes.EDAMUserException, userException:
+    except evernote.edam.error.ttypes.EDAMUserException as userException:
       result.userException = userException
-    except evernote.edam.error.ttypes.EDAMSystemException, systemException:
+    except evernote.edam.error.ttypes.EDAMSystemException as systemException:
       result.systemException = systemException
-    except evernote.edam.error.ttypes.EDAMNotFoundException, notFoundException:
+    except evernote.edam.error.ttypes.EDAMNotFoundException as notFoundException:
       result.notFoundException = notFoundException
     oprot.writeMessageBegin("getResourceAlternateData", TMessageType.REPLY, seqid)
     result.write(oprot)
@@ -8240,11 +8240,11 @@ class Processor(Iface, TProcessor):
     result = getResourceAttributes_result()
     try:
       result.success = self._handler.getResourceAttributes(args.authenticationToken, args.guid)
-    except evernote.edam.error.ttypes.EDAMUserException, userException:
+    except evernote.edam.error.ttypes.EDAMUserException as userException:
       result.userException = userException
-    except evernote.edam.error.ttypes.EDAMSystemException, systemException:
+    except evernote.edam.error.ttypes.EDAMSystemException as systemException:
       result.systemException = systemException
-    except evernote.edam.error.ttypes.EDAMNotFoundException, notFoundException:
+    except evernote.edam.error.ttypes.EDAMNotFoundException as notFoundException:
       result.notFoundException = notFoundException
     oprot.writeMessageBegin("getResourceAttributes", TMessageType.REPLY, seqid)
     result.write(oprot)
@@ -8258,9 +8258,9 @@ class Processor(Iface, TProcessor):
     result = getAccountSize_result()
     try:
       result.success = self._handler.getAccountSize(args.authenticationToken)
-    except evernote.edam.error.ttypes.EDAMUserException, userException:
+    except evernote.edam.error.ttypes.EDAMUserException as userException:
       result.userException = userException
-    except evernote.edam.error.ttypes.EDAMSystemException, systemException:
+    except evernote.edam.error.ttypes.EDAMSystemException as systemException:
       result.systemException = systemException
     oprot.writeMessageBegin("getAccountSize", TMessageType.REPLY, seqid)
     result.write(oprot)
@@ -8274,9 +8274,9 @@ class Processor(Iface, TProcessor):
     result = getAds_result()
     try:
       result.success = self._handler.getAds(args.authenticationToken, args.adParameters)
-    except evernote.edam.error.ttypes.EDAMUserException, userException:
+    except evernote.edam.error.ttypes.EDAMUserException as userException:
       result.userException = userException
-    except evernote.edam.error.ttypes.EDAMSystemException, systemException:
+    except evernote.edam.error.ttypes.EDAMSystemException as systemException:
       result.systemException = systemException
     oprot.writeMessageBegin("getAds", TMessageType.REPLY, seqid)
     result.write(oprot)
@@ -8290,9 +8290,9 @@ class Processor(Iface, TProcessor):
     result = getRandomAd_result()
     try:
       result.success = self._handler.getRandomAd(args.authenticationToken, args.adParameters)
-    except evernote.edam.error.ttypes.EDAMUserException, userException:
+    except evernote.edam.error.ttypes.EDAMUserException as userException:
       result.userException = userException
-    except evernote.edam.error.ttypes.EDAMSystemException, systemException:
+    except evernote.edam.error.ttypes.EDAMSystemException as systemException:
       result.systemException = systemException
     oprot.writeMessageBegin("getRandomAd", TMessageType.REPLY, seqid)
     result.write(oprot)
@@ -8306,9 +8306,9 @@ class Processor(Iface, TProcessor):
     result = getPublicNotebook_result()
     try:
       result.success = self._handler.getPublicNotebook(args.userId, args.publicUri)
-    except evernote.edam.error.ttypes.EDAMSystemException, systemException:
+    except evernote.edam.error.ttypes.EDAMSystemException as systemException:
       result.systemException = systemException
-    except evernote.edam.error.ttypes.EDAMNotFoundException, notFoundException:
+    except evernote.edam.error.ttypes.EDAMNotFoundException as notFoundException:
       result.notFoundException = notFoundException
     oprot.writeMessageBegin("getPublicNotebook", TMessageType.REPLY, seqid)
     result.write(oprot)
@@ -8322,11 +8322,11 @@ class Processor(Iface, TProcessor):
     result = createSharedNotebook_result()
     try:
       result.success = self._handler.createSharedNotebook(args.authenticationToken, args.sharedNotebook)
-    except evernote.edam.error.ttypes.EDAMUserException, userException:
+    except evernote.edam.error.ttypes.EDAMUserException as userException:
       result.userException = userException
-    except evernote.edam.error.ttypes.EDAMNotFoundException, notFoundException:
+    except evernote.edam.error.ttypes.EDAMNotFoundException as notFoundException:
       result.notFoundException = notFoundException
-    except evernote.edam.error.ttypes.EDAMSystemException, systemException:
+    except evernote.edam.error.ttypes.EDAMSystemException as systemException:
       result.systemException = systemException
     oprot.writeMessageBegin("createSharedNotebook", TMessageType.REPLY, seqid)
     result.write(oprot)
@@ -8340,11 +8340,11 @@ class Processor(Iface, TProcessor):
     result = sendMessageToSharedNotebookMembers_result()
     try:
       result.success = self._handler.sendMessageToSharedNotebookMembers(args.authenticationToken, args.notebookGuid, args.messageText, args.recipients)
-    except evernote.edam.error.ttypes.EDAMUserException, userException:
+    except evernote.edam.error.ttypes.EDAMUserException as userException:
       result.userException = userException
-    except evernote.edam.error.ttypes.EDAMNotFoundException, notFoundException:
+    except evernote.edam.error.ttypes.EDAMNotFoundException as notFoundException:
       result.notFoundException = notFoundException
-    except evernote.edam.error.ttypes.EDAMSystemException, systemException:
+    except evernote.edam.error.ttypes.EDAMSystemException as systemException:
       result.systemException = systemException
     oprot.writeMessageBegin("sendMessageToSharedNotebookMembers", TMessageType.REPLY, seqid)
     result.write(oprot)
@@ -8358,11 +8358,11 @@ class Processor(Iface, TProcessor):
     result = listSharedNotebooks_result()
     try:
       result.success = self._handler.listSharedNotebooks(args.authenticationToken)
-    except evernote.edam.error.ttypes.EDAMUserException, userException:
+    except evernote.edam.error.ttypes.EDAMUserException as userException:
       result.userException = userException
-    except evernote.edam.error.ttypes.EDAMNotFoundException, notFoundException:
+    except evernote.edam.error.ttypes.EDAMNotFoundException as notFoundException:
       result.notFoundException = notFoundException
-    except evernote.edam.error.ttypes.EDAMSystemException, systemException:
+    except evernote.edam.error.ttypes.EDAMSystemException as systemException:
       result.systemException = systemException
     oprot.writeMessageBegin("listSharedNotebooks", TMessageType.REPLY, seqid)
     result.write(oprot)
@@ -8376,11 +8376,11 @@ class Processor(Iface, TProcessor):
     result = expungeSharedNotebooks_result()
     try:
       result.success = self._handler.expungeSharedNotebooks(args.authenticationToken, args.sharedNotebookIds)
-    except evernote.edam.error.ttypes.EDAMUserException, userException:
+    except evernote.edam.error.ttypes.EDAMUserException as userException:
       result.userException = userException
-    except evernote.edam.error.ttypes.EDAMNotFoundException, notFoundException:
+    except evernote.edam.error.ttypes.EDAMNotFoundException as notFoundException:
       result.notFoundException = notFoundException
-    except evernote.edam.error.ttypes.EDAMSystemException, systemException:
+    except evernote.edam.error.ttypes.EDAMSystemException as systemException:
       result.systemException = systemException
     oprot.writeMessageBegin("expungeSharedNotebooks", TMessageType.REPLY, seqid)
     result.write(oprot)
@@ -8394,11 +8394,11 @@ class Processor(Iface, TProcessor):
     result = createLinkedNotebook_result()
     try:
       result.success = self._handler.createLinkedNotebook(args.authenticationToken, args.linkedNotebook)
-    except evernote.edam.error.ttypes.EDAMUserException, userException:
+    except evernote.edam.error.ttypes.EDAMUserException as userException:
       result.userException = userException
-    except evernote.edam.error.ttypes.EDAMNotFoundException, notFoundException:
+    except evernote.edam.error.ttypes.EDAMNotFoundException as notFoundException:
       result.notFoundException = notFoundException
-    except evernote.edam.error.ttypes.EDAMSystemException, systemException:
+    except evernote.edam.error.ttypes.EDAMSystemException as systemException:
       result.systemException = systemException
     oprot.writeMessageBegin("createLinkedNotebook", TMessageType.REPLY, seqid)
     result.write(oprot)
@@ -8412,11 +8412,11 @@ class Processor(Iface, TProcessor):
     result = updateLinkedNotebook_result()
     try:
       result.success = self._handler.updateLinkedNotebook(args.authenticationToken, args.linkedNotebook)
-    except evernote.edam.error.ttypes.EDAMUserException, userException:
+    except evernote.edam.error.ttypes.EDAMUserException as userException:
       result.userException = userException
-    except evernote.edam.error.ttypes.EDAMNotFoundException, notFoundException:
+    except evernote.edam.error.ttypes.EDAMNotFoundException as notFoundException:
       result.notFoundException = notFoundException
-    except evernote.edam.error.ttypes.EDAMSystemException, systemException:
+    except evernote.edam.error.ttypes.EDAMSystemException as systemException:
       result.systemException = systemException
     oprot.writeMessageBegin("updateLinkedNotebook", TMessageType.REPLY, seqid)
     result.write(oprot)
@@ -8430,11 +8430,11 @@ class Processor(Iface, TProcessor):
     result = listLinkedNotebooks_result()
     try:
       result.success = self._handler.listLinkedNotebooks(args.authenticationToken)
-    except evernote.edam.error.ttypes.EDAMUserException, userException:
+    except evernote.edam.error.ttypes.EDAMUserException as userException:
       result.userException = userException
-    except evernote.edam.error.ttypes.EDAMNotFoundException, notFoundException:
+    except evernote.edam.error.ttypes.EDAMNotFoundException as notFoundException:
       result.notFoundException = notFoundException
-    except evernote.edam.error.ttypes.EDAMSystemException, systemException:
+    except evernote.edam.error.ttypes.EDAMSystemException as systemException:
       result.systemException = systemException
     oprot.writeMessageBegin("listLinkedNotebooks", TMessageType.REPLY, seqid)
     result.write(oprot)
@@ -8448,11 +8448,11 @@ class Processor(Iface, TProcessor):
     result = expungeLinkedNotebook_result()
     try:
       result.success = self._handler.expungeLinkedNotebook(args.authenticationToken, args.guid)
-    except evernote.edam.error.ttypes.EDAMUserException, userException:
+    except evernote.edam.error.ttypes.EDAMUserException as userException:
       result.userException = userException
-    except evernote.edam.error.ttypes.EDAMNotFoundException, notFoundException:
+    except evernote.edam.error.ttypes.EDAMNotFoundException as notFoundException:
       result.notFoundException = notFoundException
-    except evernote.edam.error.ttypes.EDAMSystemException, systemException:
+    except evernote.edam.error.ttypes.EDAMSystemException as systemException:
       result.systemException = systemException
     oprot.writeMessageBegin("expungeLinkedNotebook", TMessageType.REPLY, seqid)
     result.write(oprot)
@@ -8466,11 +8466,11 @@ class Processor(Iface, TProcessor):
     result = authenticateToSharedNotebook_result()
     try:
       result.success = self._handler.authenticateToSharedNotebook(args.shareKey, args.authenticationToken)
-    except evernote.edam.error.ttypes.EDAMUserException, userException:
+    except evernote.edam.error.ttypes.EDAMUserException as userException:
       result.userException = userException
-    except evernote.edam.error.ttypes.EDAMNotFoundException, notFoundException:
+    except evernote.edam.error.ttypes.EDAMNotFoundException as notFoundException:
       result.notFoundException = notFoundException
-    except evernote.edam.error.ttypes.EDAMSystemException, systemException:
+    except evernote.edam.error.ttypes.EDAMSystemException as systemException:
       result.systemException = systemException
     oprot.writeMessageBegin("authenticateToSharedNotebook", TMessageType.REPLY, seqid)
     result.write(oprot)
@@ -8484,11 +8484,11 @@ class Processor(Iface, TProcessor):
     result = getSharedNotebookByAuth_result()
     try:
       result.success = self._handler.getSharedNotebookByAuth(args.authenticationToken)
-    except evernote.edam.error.ttypes.EDAMUserException, userException:
+    except evernote.edam.error.ttypes.EDAMUserException as userException:
       result.userException = userException
-    except evernote.edam.error.ttypes.EDAMNotFoundException, notFoundException:
+    except evernote.edam.error.ttypes.EDAMNotFoundException as notFoundException:
       result.notFoundException = notFoundException
-    except evernote.edam.error.ttypes.EDAMSystemException, systemException:
+    except evernote.edam.error.ttypes.EDAMSystemException as systemException:
       result.systemException = systemException
     oprot.writeMessageBegin("getSharedNotebookByAuth", TMessageType.REPLY, seqid)
     result.write(oprot)
@@ -8502,11 +8502,11 @@ class Processor(Iface, TProcessor):
     result = emailNote_result()
     try:
       self._handler.emailNote(args.authenticationToken, args.parameters)
-    except evernote.edam.error.ttypes.EDAMUserException, userException:
+    except evernote.edam.error.ttypes.EDAMUserException as userException:
       result.userException = userException
-    except evernote.edam.error.ttypes.EDAMNotFoundException, notFoundException:
+    except evernote.edam.error.ttypes.EDAMNotFoundException as notFoundException:
       result.notFoundException = notFoundException
-    except evernote.edam.error.ttypes.EDAMSystemException, systemException:
+    except evernote.edam.error.ttypes.EDAMSystemException as systemException:
       result.systemException = systemException
     oprot.writeMessageBegin("emailNote", TMessageType.REPLY, seqid)
     result.write(oprot)
@@ -8520,11 +8520,11 @@ class Processor(Iface, TProcessor):
     result = shareNote_result()
     try:
       result.success = self._handler.shareNote(args.authenticationToken, args.guid)
-    except evernote.edam.error.ttypes.EDAMUserException, userException:
+    except evernote.edam.error.ttypes.EDAMUserException as userException:
       result.userException = userException
-    except evernote.edam.error.ttypes.EDAMNotFoundException, notFoundException:
+    except evernote.edam.error.ttypes.EDAMNotFoundException as notFoundException:
       result.notFoundException = notFoundException
-    except evernote.edam.error.ttypes.EDAMSystemException, systemException:
+    except evernote.edam.error.ttypes.EDAMSystemException as systemException:
       result.systemException = systemException
     oprot.writeMessageBegin("shareNote", TMessageType.REPLY, seqid)
     result.write(oprot)
@@ -8538,11 +8538,11 @@ class Processor(Iface, TProcessor):
     result = stopSharingNote_result()
     try:
       self._handler.stopSharingNote(args.authenticationToken, args.guid)
-    except evernote.edam.error.ttypes.EDAMUserException, userException:
+    except evernote.edam.error.ttypes.EDAMUserException as userException:
       result.userException = userException
-    except evernote.edam.error.ttypes.EDAMNotFoundException, notFoundException:
+    except evernote.edam.error.ttypes.EDAMNotFoundException as notFoundException:
       result.notFoundException = notFoundException
-    except evernote.edam.error.ttypes.EDAMSystemException, systemException:
+    except evernote.edam.error.ttypes.EDAMSystemException as systemException:
       result.systemException = systemException
     oprot.writeMessageBegin("stopSharingNote", TMessageType.REPLY, seqid)
     result.write(oprot)
@@ -8556,11 +8556,11 @@ class Processor(Iface, TProcessor):
     result = authenticateToSharedNote_result()
     try:
       result.success = self._handler.authenticateToSharedNote(args.guid, args.noteKey)
-    except evernote.edam.error.ttypes.EDAMUserException, userException:
+    except evernote.edam.error.ttypes.EDAMUserException as userException:
       result.userException = userException
-    except evernote.edam.error.ttypes.EDAMNotFoundException, notFoundException:
+    except evernote.edam.error.ttypes.EDAMNotFoundException as notFoundException:
       result.notFoundException = notFoundException
-    except evernote.edam.error.ttypes.EDAMSystemException, systemException:
+    except evernote.edam.error.ttypes.EDAMSystemException as systemException:
       result.systemException = systemException
     oprot.writeMessageBegin("authenticateToSharedNote", TMessageType.REPLY, seqid)
     result.write(oprot)
@@ -8574,11 +8574,11 @@ class Processor(Iface, TProcessor):
     result = findRelated_result()
     try:
       result.success = self._handler.findRelated(args.authenticationToken, args.query, args.resultSpec)
-    except evernote.edam.error.ttypes.EDAMUserException, userException:
+    except evernote.edam.error.ttypes.EDAMUserException as userException:
       result.userException = userException
-    except evernote.edam.error.ttypes.EDAMSystemException, systemException:
+    except evernote.edam.error.ttypes.EDAMSystemException as systemException:
       result.systemException = systemException
-    except evernote.edam.error.ttypes.EDAMNotFoundException, notFoundException:
+    except evernote.edam.error.ttypes.EDAMNotFoundException as notFoundException:
       result.notFoundException = notFoundException
     oprot.writeMessageBegin("findRelated", TMessageType.REPLY, seqid)
     result.write(oprot)
@@ -8639,7 +8639,7 @@ class getSyncState_args(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -8725,7 +8725,7 @@ class getSyncState_result(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -8798,7 +8798,7 @@ class getSyncStateWithMetrics_args(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -8884,7 +8884,7 @@ class getSyncStateWithMetrics_result(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -8980,7 +8980,7 @@ class getSyncChunk_args(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -9066,7 +9066,7 @@ class getSyncChunk_result(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -9163,7 +9163,7 @@ class getFilteredSyncChunk_args(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -9249,7 +9249,7 @@ class getFilteredSyncChunk_result(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -9322,7 +9322,7 @@ class getLinkedNotebookSyncState_args(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -9421,7 +9421,7 @@ class getLinkedNotebookSyncState_result(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -9530,7 +9530,7 @@ class getLinkedNotebookSyncChunk_args(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -9629,7 +9629,7 @@ class getLinkedNotebookSyncChunk_result(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -9689,7 +9689,7 @@ class listNotebooks_args(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -9730,7 +9730,7 @@ class listNotebooks_result(object):
         if ftype == TType.LIST:
           self.success = []
           (_etype205, _size202) = iprot.readListBegin()
-          for _i206 in xrange(_size202):
+          for _i206 in range(_size202):
             _elem207 = evernote.edam.type.ttypes.Notebook()
             _elem207.read(iprot)
             self.success.append(_elem207)
@@ -9783,7 +9783,7 @@ class listNotebooks_result(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -9855,7 +9855,7 @@ class getNotebook_args(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -9954,7 +9954,7 @@ class getNotebook_result(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -10014,7 +10014,7 @@ class getDefaultNotebook_args(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -10100,7 +10100,7 @@ class getDefaultNotebook_result(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -10173,7 +10173,7 @@ class createNotebook_args(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -10259,7 +10259,7 @@ class createNotebook_result(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -10332,7 +10332,7 @@ class updateNotebook_args(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -10430,7 +10430,7 @@ class updateNotebook_result(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -10502,7 +10502,7 @@ class expungeNotebook_args(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -10600,7 +10600,7 @@ class expungeNotebook_result(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -10660,7 +10660,7 @@ class listTags_args(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -10701,7 +10701,7 @@ class listTags_result(object):
         if ftype == TType.LIST:
           self.success = []
           (_etype212, _size209) = iprot.readListBegin()
-          for _i213 in xrange(_size209):
+          for _i213 in range(_size209):
             _elem214 = evernote.edam.type.ttypes.Tag()
             _elem214.read(iprot)
             self.success.append(_elem214)
@@ -10754,7 +10754,7 @@ class listTags_result(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -10826,7 +10826,7 @@ class listTagsByNotebook_args(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -10870,7 +10870,7 @@ class listTagsByNotebook_result(object):
         if ftype == TType.LIST:
           self.success = []
           (_etype219, _size216) = iprot.readListBegin()
-          for _i220 in xrange(_size216):
+          for _i220 in range(_size216):
             _elem221 = evernote.edam.type.ttypes.Tag()
             _elem221.read(iprot)
             self.success.append(_elem221)
@@ -10933,7 +10933,7 @@ class listTagsByNotebook_result(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -11005,7 +11005,7 @@ class getTag_args(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -11104,7 +11104,7 @@ class getTag_result(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -11177,7 +11177,7 @@ class createTag_args(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -11276,7 +11276,7 @@ class createTag_result(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -11349,7 +11349,7 @@ class updateTag_args(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -11447,7 +11447,7 @@ class updateTag_result(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -11519,7 +11519,7 @@ class untagAll_args(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -11606,7 +11606,7 @@ class untagAll_result(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -11678,7 +11678,7 @@ class expungeTag_args(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -11776,7 +11776,7 @@ class expungeTag_result(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -11836,7 +11836,7 @@ class listSearches_args(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -11877,7 +11877,7 @@ class listSearches_result(object):
         if ftype == TType.LIST:
           self.success = []
           (_etype226, _size223) = iprot.readListBegin()
-          for _i227 in xrange(_size223):
+          for _i227 in range(_size223):
             _elem228 = evernote.edam.type.ttypes.SavedSearch()
             _elem228.read(iprot)
             self.success.append(_elem228)
@@ -11930,7 +11930,7 @@ class listSearches_result(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -12002,7 +12002,7 @@ class getSearch_args(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -12101,7 +12101,7 @@ class getSearch_result(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -12174,7 +12174,7 @@ class createSearch_args(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -12260,7 +12260,7 @@ class createSearch_result(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -12333,7 +12333,7 @@ class updateSearch_args(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -12431,7 +12431,7 @@ class updateSearch_result(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -12503,7 +12503,7 @@ class expungeSearch_args(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -12601,7 +12601,7 @@ class expungeSearch_result(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -12698,7 +12698,7 @@ class findNotes_args(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -12797,7 +12797,7 @@ class findNotes_result(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -12882,7 +12882,7 @@ class findNoteOffset_args(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -12980,7 +12980,7 @@ class findNoteOffset_result(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -13090,7 +13090,7 @@ class findNotesMetadata_args(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -13189,7 +13189,7 @@ class findNotesMetadata_result(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -13274,7 +13274,7 @@ class findNoteCounts_args(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -13373,7 +13373,7 @@ class findNoteCounts_result(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -13493,7 +13493,7 @@ class getNote_args(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -13592,7 +13592,7 @@ class getNote_result(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -13664,7 +13664,7 @@ class getNoteApplicationData_args(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -13763,7 +13763,7 @@ class getNoteApplicationData_result(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -13847,7 +13847,7 @@ class getNoteApplicationDataEntry_args(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -13945,7 +13945,7 @@ class getNoteApplicationDataEntry_result(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -14041,7 +14041,7 @@ class setNoteApplicationDataEntry_args(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -14139,7 +14139,7 @@ class setNoteApplicationDataEntry_result(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -14223,7 +14223,7 @@ class unsetNoteApplicationDataEntry_args(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -14321,7 +14321,7 @@ class unsetNoteApplicationDataEntry_result(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -14393,7 +14393,7 @@ class getNoteContent_args(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -14491,7 +14491,7 @@ class getNoteContent_result(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -14587,7 +14587,7 @@ class getNoteSearchText_args(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -14685,7 +14685,7 @@ class getNoteSearchText_result(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -14757,7 +14757,7 @@ class getResourceSearchText_args(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -14855,7 +14855,7 @@ class getResourceSearchText_result(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -14927,7 +14927,7 @@ class getNoteTagNames_args(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -14971,7 +14971,7 @@ class getNoteTagNames_result(object):
         if ftype == TType.LIST:
           self.success = []
           (_etype233, _size230) = iprot.readListBegin()
-          for _i234 in xrange(_size230):
+          for _i234 in range(_size230):
             _elem235 = iprot.readString();
             self.success.append(_elem235)
           iprot.readListEnd()
@@ -15033,7 +15033,7 @@ class getNoteTagNames_result(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -15106,7 +15106,7 @@ class createNote_args(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -15205,7 +15205,7 @@ class createNote_result(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -15278,7 +15278,7 @@ class updateNote_args(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -15377,7 +15377,7 @@ class updateNote_result(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -15449,7 +15449,7 @@ class deleteNote_args(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -15547,7 +15547,7 @@ class deleteNote_result(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -15619,7 +15619,7 @@ class expungeNote_args(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -15717,7 +15717,7 @@ class expungeNote_result(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -15761,7 +15761,7 @@ class expungeNotes_args(object):
         if ftype == TType.LIST:
           self.noteGuids = []
           (_etype240, _size237) = iprot.readListBegin()
-          for _i241 in xrange(_size237):
+          for _i241 in range(_size237):
             _elem242 = iprot.readString();
             self.noteGuids.append(_elem242)
           iprot.readListEnd()
@@ -15797,7 +15797,7 @@ class expungeNotes_args(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -15895,7 +15895,7 @@ class expungeNotes_result(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -15955,7 +15955,7 @@ class expungeInactiveNotes_args(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -16040,7 +16040,7 @@ class expungeInactiveNotes_result(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -16124,7 +16124,7 @@ class copyNote_args(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -16223,7 +16223,7 @@ class copyNote_result(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -16295,7 +16295,7 @@ class listNoteVersions_args(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -16339,7 +16339,7 @@ class listNoteVersions_result(object):
         if ftype == TType.LIST:
           self.success = []
           (_etype247, _size244) = iprot.readListBegin()
-          for _i248 in xrange(_size244):
+          for _i248 in range(_size244):
             _elem249 = NoteVersionId()
             _elem249.read(iprot)
             self.success.append(_elem249)
@@ -16402,7 +16402,7 @@ class listNoteVersions_result(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -16522,7 +16522,7 @@ class getNoteVersion_args(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -16621,7 +16621,7 @@ class getNoteVersion_result(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -16741,7 +16741,7 @@ class getResource_args(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -16840,7 +16840,7 @@ class getResource_result(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -16912,7 +16912,7 @@ class getResourceApplicationData_args(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -17011,7 +17011,7 @@ class getResourceApplicationData_result(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -17095,7 +17095,7 @@ class getResourceApplicationDataEntry_args(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -17193,7 +17193,7 @@ class getResourceApplicationDataEntry_result(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -17289,7 +17289,7 @@ class setResourceApplicationDataEntry_args(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -17387,7 +17387,7 @@ class setResourceApplicationDataEntry_result(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -17471,7 +17471,7 @@ class unsetResourceApplicationDataEntry_args(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -17569,7 +17569,7 @@ class unsetResourceApplicationDataEntry_result(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -17642,7 +17642,7 @@ class updateResource_args(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -17740,7 +17740,7 @@ class updateResource_result(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -17812,7 +17812,7 @@ class getResourceData_args(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -17910,7 +17910,7 @@ class getResourceData_result(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -18030,7 +18030,7 @@ class getResourceByHash_args(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -18129,7 +18129,7 @@ class getResourceByHash_result(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -18201,7 +18201,7 @@ class getResourceRecognition_args(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -18299,7 +18299,7 @@ class getResourceRecognition_result(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -18371,7 +18371,7 @@ class getResourceAlternateData_args(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -18469,7 +18469,7 @@ class getResourceAlternateData_result(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -18541,7 +18541,7 @@ class getResourceAttributes_args(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -18640,7 +18640,7 @@ class getResourceAttributes_result(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -18700,7 +18700,7 @@ class getAccountSize_args(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -18785,7 +18785,7 @@ class getAccountSize_result(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -18858,7 +18858,7 @@ class getAds_args(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -18899,7 +18899,7 @@ class getAds_result(object):
         if ftype == TType.LIST:
           self.success = []
           (_etype254, _size251) = iprot.readListBegin()
-          for _i255 in xrange(_size251):
+          for _i255 in range(_size251):
             _elem256 = evernote.edam.type.ttypes.Ad()
             _elem256.read(iprot)
             self.success.append(_elem256)
@@ -18952,7 +18952,7 @@ class getAds_result(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -19025,7 +19025,7 @@ class getRandomAd_args(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -19111,7 +19111,7 @@ class getRandomAd_result(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -19183,7 +19183,7 @@ class getPublicNotebook_args(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -19269,7 +19269,7 @@ class getPublicNotebook_result(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -19342,7 +19342,7 @@ class createSharedNotebook_args(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -19441,7 +19441,7 @@ class createSharedNotebook_result(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -19501,7 +19501,7 @@ class sendMessageToSharedNotebookMembers_args(object):
         if ftype == TType.LIST:
           self.recipients = []
           (_etype261, _size258) = iprot.readListBegin()
-          for _i262 in xrange(_size258):
+          for _i262 in range(_size258):
             _elem263 = iprot.readString();
             self.recipients.append(_elem263)
           iprot.readListEnd()
@@ -19545,7 +19545,7 @@ class sendMessageToSharedNotebookMembers_args(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -19643,7 +19643,7 @@ class sendMessageToSharedNotebookMembers_result(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -19703,7 +19703,7 @@ class listSharedNotebooks_args(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -19747,7 +19747,7 @@ class listSharedNotebooks_result(object):
         if ftype == TType.LIST:
           self.success = []
           (_etype268, _size265) = iprot.readListBegin()
-          for _i269 in xrange(_size265):
+          for _i269 in range(_size265):
             _elem270 = evernote.edam.type.ttypes.SharedNotebook()
             _elem270.read(iprot)
             self.success.append(_elem270)
@@ -19810,7 +19810,7 @@ class listSharedNotebooks_result(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -19854,7 +19854,7 @@ class expungeSharedNotebooks_args(object):
         if ftype == TType.LIST:
           self.sharedNotebookIds = []
           (_etype275, _size272) = iprot.readListBegin()
-          for _i276 in xrange(_size272):
+          for _i276 in range(_size272):
             _elem277 = iprot.readI64();
             self.sharedNotebookIds.append(_elem277)
           iprot.readListEnd()
@@ -19890,7 +19890,7 @@ class expungeSharedNotebooks_args(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -19988,7 +19988,7 @@ class expungeSharedNotebooks_result(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -20061,7 +20061,7 @@ class createLinkedNotebook_args(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -20160,7 +20160,7 @@ class createLinkedNotebook_result(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -20233,7 +20233,7 @@ class updateLinkedNotebook_args(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -20331,7 +20331,7 @@ class updateLinkedNotebook_result(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -20391,7 +20391,7 @@ class listLinkedNotebooks_args(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -20435,7 +20435,7 @@ class listLinkedNotebooks_result(object):
         if ftype == TType.LIST:
           self.success = []
           (_etype282, _size279) = iprot.readListBegin()
-          for _i283 in xrange(_size279):
+          for _i283 in range(_size279):
             _elem284 = evernote.edam.type.ttypes.LinkedNotebook()
             _elem284.read(iprot)
             self.success.append(_elem284)
@@ -20498,7 +20498,7 @@ class listLinkedNotebooks_result(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -20570,7 +20570,7 @@ class expungeLinkedNotebook_args(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -20668,7 +20668,7 @@ class expungeLinkedNotebook_result(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -20740,7 +20740,7 @@ class authenticateToSharedNotebook_args(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -20839,7 +20839,7 @@ class authenticateToSharedNotebook_result(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -20899,7 +20899,7 @@ class getSharedNotebookByAuth_args(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -20998,7 +20998,7 @@ class getSharedNotebookByAuth_result(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -21071,7 +21071,7 @@ class emailNote_args(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -21158,7 +21158,7 @@ class emailNote_result(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -21230,7 +21230,7 @@ class shareNote_args(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -21328,7 +21328,7 @@ class shareNote_result(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -21400,7 +21400,7 @@ class stopSharingNote_args(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -21487,7 +21487,7 @@ class stopSharingNote_result(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -21559,7 +21559,7 @@ class authenticateToSharedNote_args(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -21658,7 +21658,7 @@ class authenticateToSharedNote_result(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -21744,7 +21744,7 @@ class findRelated_args(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -21843,7 +21843,7 @@ class findRelated_result(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):

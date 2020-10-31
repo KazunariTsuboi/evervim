@@ -17,11 +17,11 @@
 # under the License.
 #
 
-from TTransport import *
-from cStringIO import StringIO
+from .TTransport import *
+from io import StringIO
 
-import urlparse
-import httplib
+import urllib.parse
+import http.client
 import warnings
 import socket
 
@@ -45,13 +45,13 @@ class THttpClient(TTransportBase):
       self.path = path
       self.scheme = 'http'
     else:
-      parsed = urlparse.urlparse(uri_or_host)
+      parsed = urllib.parse.urlparse(uri_or_host)
       self.scheme = parsed.scheme
       assert self.scheme in ('http', 'https')
       if self.scheme == 'http':
-        self.port = parsed.port or httplib.HTTP_PORT
+        self.port = parsed.port or http.client.HTTP_PORT
       elif self.scheme == 'https':
-        self.port = parsed.port or httplib.HTTPS_PORT
+        self.port = parsed.port or http.client.HTTPS_PORT
       self.host = parsed.hostname
       self.path = parsed.path
       if parsed.query:
@@ -62,9 +62,9 @@ class THttpClient(TTransportBase):
 
   def open(self):
     if self.scheme == 'http':
-      self.__http = httplib.HTTP(self.host, self.port)
+      self.__http = http.client.HTTP(self.host, self.port)
     else:
-      self.__http = httplib.HTTPS(self.host, self.port)
+      self.__http = http.client.HTTPS(self.host, self.port)
 
   def close(self):
     self.__http.close()

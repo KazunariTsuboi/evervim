@@ -7,9 +7,9 @@ import sys
 import os
 sys.path.append(os.path.join(os.path.dirname(__file__), 'lib/'))
 import evernote.edam.type.ttypes as Types
-from evervim_editor import EvervimEditor
-from evervim_editor import EvervimPref
-from evernoteapi import EvernoteAPI
+from .evervim_editor import EvervimEditor
+from .evervim_editor import EvervimPref
+from .evernoteapi import EvernoteAPI
 
 import json
 testdata = json.load(open("evernoteapi_testdata.json"))
@@ -56,9 +56,9 @@ class TestEvervimEditor(unittest.TestCase):
     def testNote2buffer(self):  # {{{
         editor = EvervimEditor.getInstance()
         note = Types.Note()
-        note.title = u'タイトルテスト'.encode('utf-8')
-        note.tagNames = [u'タグ１'.encode('utf-8'), u'*タグ２'.encode('utf-8')]
-        note.content = u"""<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE en-note SYSTEM "http://xml.evernote.com/pub/enml2.dtd"><en-note>this is content
+        note.title = 'タイトルテスト'.encode('utf-8')
+        note.tagNames = ['タグ１'.encode('utf-8'), '*タグ２'.encode('utf-8')]
+        note.content = """<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE en-note SYSTEM "http://xml.evernote.com/pub/enml2.dtd"><en-note>this is content
 本文テスト
 <h3>たぐ３</h3>
 </en-note>
@@ -66,8 +66,8 @@ class TestEvervimEditor(unittest.TestCase):
         EvervimPref.getInstance().usemarkdown = '0'     # dont use markdown
         EvervimPref.getInstance().xmlindent   = '    '  # default ts=4
         xmlStrings = editor.note2buffer(note)
-        self.assertEqual(u'タイトルテスト'.encode('utf-8'), xmlStrings[0])
-        self.assertEqual(u'Tags:タグ１,*タグ２'.encode('utf-8'), xmlStrings[1])
+        self.assertEqual('タイトルテスト'.encode('utf-8'), xmlStrings[0])
+        self.assertEqual('Tags:タグ１,*タグ２'.encode('utf-8'), xmlStrings[1])
         self.assertEqual('this is content'.encode('utf-8'), xmlStrings[2])  # this is content
         self.assertEqual('本文テスト'.encode('utf-8'), xmlStrings[3])       # 本文テスト
         self.assertEqual('<h3>'.encode('utf-8'), xmlStrings[4])             # <h3>
@@ -76,8 +76,8 @@ class TestEvervimEditor(unittest.TestCase):
 
         EvervimPref.getInstance().usemarkdown = '1'  # dont use markdown
         mkdStrings = editor.note2buffer(note)
-        self.assertEqual(u'# タイトルテスト'.encode('utf-8'), mkdStrings[0])
-        self.assertEqual(u'Tags:タグ１,*タグ２'.encode('utf-8'), xmlStrings[1])
+        self.assertEqual('# タイトルテスト'.encode('utf-8'), mkdStrings[0])
+        self.assertEqual('Tags:タグ１,*タグ２'.encode('utf-8'), xmlStrings[1])
         self.assertEqual('this is content'.encode('utf-8'), mkdStrings[2])
         self.assertEqual('本文テスト'.encode('utf-8'), mkdStrings[3])
         self.assertEqual('### たぐ３'.encode('utf-8'), mkdStrings[4])
@@ -89,55 +89,55 @@ class TestEvervimEditor(unittest.TestCase):
         pref.devtoken = DEVELOPER_TOKEN
         editor.setAPI()
         note = Types.Note()
-        xmlBufferHead = u"""タイトルテスト
+        xmlBufferHead = """タイトルテスト
 タグ１,*タグ２
 """.encode('utf-8')
-        xmlBufferContent = u"""this is content
+        xmlBufferContent = """this is content
 本文テスト
 <h3>たぐ３</h3>""".encode('utf-8')
 
         EvervimPref.getInstance().usemarkdown = '0'     # dont use markdown
         editednote = editor.buffer2note(note, (xmlBufferHead + xmlBufferContent).splitlines())
-        self.assertEqual(u'タイトルテスト'.encode('utf-8'), editednote.title)
-        self.assertEqual([u'タグ１'.encode('utf-8'), u'*タグ２'.encode('utf-8')], editednote.tagNames)
+        self.assertEqual('タイトルテスト'.encode('utf-8'), editednote.title)
+        self.assertEqual(['タグ１'.encode('utf-8'), '*タグ２'.encode('utf-8')], editednote.tagNames)
         self.assertEqual(EvernoteAPI.NOTECONTENT_HEADER + xmlBufferContent + EvernoteAPI.NOTECONTENT_FOOTER, editednote.content)
 
         EvervimPref.getInstance().usemarkdown = '1'
         note = Types.Note()
-        mkdBuffer = u"""# タイトルテスト
+        mkdBuffer = """# タイトルテスト
 タグ１,*タグ２
 this is content
 本文テスト
 ### たぐ３""".encode('utf-8')
-        mkdConverted = u"""<p>this is content
+        mkdConverted = """<p>this is content
 本文テスト</p>
 <h3>たぐ３</h3>""".encode('utf-8')
 
         mkdeditednote = editor.buffer2note(note, mkdBuffer.splitlines())
-        self.assertEqual(u'タイトルテスト'.encode('utf-8'), mkdeditednote.title)
-        self.assertEqual([u'タグ１'.encode('utf-8'), u'*タグ２'.encode('utf-8')], mkdeditednote.tagNames)
+        self.assertEqual('タイトルテスト'.encode('utf-8'), mkdeditednote.title)
+        self.assertEqual(['タグ１'.encode('utf-8'), '*タグ２'.encode('utf-8')], mkdeditednote.tagNames)
         self.assertEqual(EvernoteAPI.NOTECONTENT_HEADER + mkdConverted + EvernoteAPI.NOTECONTENT_FOOTER, mkdeditednote.content)
 
         # 1行目の先頭が #で始まっていない場合も、テストが通ること
         note = Types.Note()
-        mkdBuffer = u"""タイトルテスト ### 途中#
+        mkdBuffer = """タイトルテスト ### 途中#
 タグ１,*タグ２
 this is content
 本文テスト
 ### たぐ３""".encode('utf-8')
-        mkdConverted = u"""<p>this is content
+        mkdConverted = """<p>this is content
 本文テスト</p>
 <h3>たぐ３</h3>""".encode('utf-8')
 
         mkdeditednote = editor.buffer2note(note, mkdBuffer.splitlines())
-        self.assertEqual(u'タイトルテスト ### 途中#'.encode('utf-8'), mkdeditednote.title)
-        self.assertEqual([u'タグ１'.encode('utf-8'), u'*タグ２'.encode('utf-8')], mkdeditednote.tagNames)
+        self.assertEqual('タイトルテスト ### 途中#'.encode('utf-8'), mkdeditednote.title)
+        self.assertEqual(['タグ１'.encode('utf-8'), '*タグ２'.encode('utf-8')], mkdeditednote.tagNames)
         self.assertEqual(EvernoteAPI.NOTECONTENT_HEADER + mkdConverted + EvernoteAPI.NOTECONTENT_FOOTER, mkdeditednote.content)
     # }}}
 
 if __name__ == '__main__':
     from time import localtime, strftime
-    print '\n**' + strftime("%a, %d %b %Y %H:%M:%S", localtime()) + '**\n'
+    print('\n**' + strftime("%a, %d %b %Y %H:%M:%S", localtime()) + '**\n')
 # profileを取るとき
 #   import test.pystone
 #   import cProfile

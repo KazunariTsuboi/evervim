@@ -241,7 +241,7 @@ class Data(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -550,7 +550,7 @@ class UserAttributes(object):
         if ftype == TType.LIST:
           self.viewedPromotions = []
           (_etype3, _size0) = iprot.readListBegin()
-          for _i4 in xrange(_size0):
+          for _i4 in range(_size0):
             _elem5 = iprot.readString();
             self.viewedPromotions.append(_elem5)
           iprot.readListEnd()
@@ -565,7 +565,7 @@ class UserAttributes(object):
         if ftype == TType.LIST:
           self.recentMailedAddresses = []
           (_etype9, _size6) = iprot.readListBegin()
-          for _i10 in xrange(_size6):
+          for _i10 in range(_size6):
             _elem11 = iprot.readString();
             self.recentMailedAddresses.append(_elem11)
           iprot.readListEnd()
@@ -822,7 +822,7 @@ class UserAttributes(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -1164,7 +1164,7 @@ class Accounting(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -1466,7 +1466,7 @@ class User(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -1607,7 +1607,7 @@ class Tag(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -1674,7 +1674,7 @@ class LazyMap(object):
         if ftype == TType.SET:
           self.keysOnly = set()
           (_etype17, _size14) = iprot.readSetBegin()
-          for _i18 in xrange(_size14):
+          for _i18 in range(_size14):
             _elem19 = iprot.readString();
             self.keysOnly.add(_elem19)
           iprot.readSetEnd()
@@ -1684,7 +1684,7 @@ class LazyMap(object):
         if ftype == TType.MAP:
           self.fullMap = {}
           (_ktype21, _vtype22, _size20 ) = iprot.readMapBegin() 
-          for _i24 in xrange(_size20):
+          for _i24 in range(_size20):
             _key25 = iprot.readString();
             _val26 = iprot.readString();
             self.fullMap[_key25] = _val26
@@ -1711,7 +1711,7 @@ class LazyMap(object):
     if self.fullMap is not None:
       oprot.writeFieldBegin('fullMap', TType.MAP, 2)
       oprot.writeMapBegin(TType.STRING, TType.STRING, len(self.fullMap))
-      for kiter28,viter29 in self.fullMap.items():
+      for kiter28,viter29 in list(self.fullMap.items()):
         oprot.writeString(kiter28)
         oprot.writeString(viter29)
       oprot.writeMapEnd()
@@ -1725,7 +1725,7 @@ class LazyMap(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -1998,7 +1998,7 @@ class ResourceAttributes(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -2274,7 +2274,7 @@ class Resource(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -2606,7 +2606,7 @@ class NoteAttributes(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -2867,7 +2867,7 @@ class Note(object):
         if ftype == TType.LIST:
           self.tagGuids = []
           (_etype33, _size30) = iprot.readListBegin()
-          for _i34 in xrange(_size30):
+          for _i34 in range(_size30):
             _elem35 = iprot.readString();
             self.tagGuids.append(_elem35)
           iprot.readListEnd()
@@ -2877,7 +2877,7 @@ class Note(object):
         if ftype == TType.LIST:
           self.resources = []
           (_etype39, _size36) = iprot.readListBegin()
-          for _i40 in xrange(_size36):
+          for _i40 in range(_size36):
             _elem41 = Resource()
             _elem41.read(iprot)
             self.resources.append(_elem41)
@@ -2894,7 +2894,7 @@ class Note(object):
         if ftype == TType.LIST:
           self.tagNames = []
           (_etype45, _size42) = iprot.readListBegin()
-          for _i46 in xrange(_size42):
+          for _i46 in range(_size42):
             _elem47 = iprot.readString();
             self.tagNames.append(_elem47)
           iprot.readListEnd()
@@ -2988,7 +2988,7 @@ class Note(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -3123,7 +3123,7 @@ class Publishing(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -3271,7 +3271,7 @@ class SavedSearch(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -3538,7 +3538,7 @@ class Ad(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -3743,7 +3743,7 @@ class SharedNotebook(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -3955,7 +3955,7 @@ class Notebook(object):
         if ftype == TType.LIST:
           self.sharedNotebookIds = []
           (_etype54, _size51) = iprot.readListBegin()
-          for _i55 in xrange(_size51):
+          for _i55 in range(_size51):
             _elem56 = iprot.readI64();
             self.sharedNotebookIds.append(_elem56)
           iprot.readListEnd()
@@ -3965,7 +3965,7 @@ class Notebook(object):
         if ftype == TType.LIST:
           self.sharedNotebooks = []
           (_etype60, _size57) = iprot.readListBegin()
-          for _i61 in xrange(_size57):
+          for _i61 in range(_size57):
             _elem62 = SharedNotebook()
             _elem62.read(iprot)
             self.sharedNotebooks.append(_elem62)
@@ -4041,7 +4041,7 @@ class Notebook(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -4255,7 +4255,7 @@ class LinkedNotebook(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):

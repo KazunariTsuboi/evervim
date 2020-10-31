@@ -8,8 +8,8 @@ import sys
 import traceback
 import threading
 import copy
-from evervim_editor import EvervimEditor
-from evervim_editor import EvervimPref
+from .evervim_editor import EvervimEditor
+from .evervim_editor import EvervimPref
 from xml.dom import minidom
 
 
@@ -172,7 +172,7 @@ class Evervimmer(object):
         Evervimmer.currentnote = note
 
         if len(note.title) == 0:
-            raise StandardError("*** must set title! ***")
+            raise Exception("*** must set title! ***")
     #}}}
 
     def updateNoteInthread(self, note):  # {{{
@@ -234,8 +234,8 @@ class Evervimmer(object):
             createdNote = Evervimmer.editor.api.createNote(Evervimmer.currentnote)
             Evervimmer.currentnote = createdNote
         except:
-            print traceback.format_exc(sys.exc_info()[2])
-            raise StandardError("createNote error! aborted.")
+            print(traceback.format_exc(sys.exc_info()[2]))
+            raise Exception("createNote error! aborted.")
     #}}}
 
     def getNote(self):  # {{{
@@ -296,14 +296,14 @@ class Evervimmer(object):
     def __openClient(self, title):  # {{{ NOTE:this is beta.
         if self.pref.enscriptpath is None:
             try:
-                import _winreg
-                reg = _winreg.OpenKey(_winreg.HKEY_LOCAL_MACHINE, 'SOFTWARE\Microsoft\Windows\CurrentVersion\App Paths\ENScript.exe')
-                self.pref.enscriptpath =  _winreg.EnumValue(reg, 0)[1].encode('shift_jis')
+                import winreg
+                reg = winreg.OpenKey(winreg.HKEY_LOCAL_MACHINE, 'SOFTWARE\Microsoft\Windows\CurrentVersion\App Paths\ENScript.exe')
+                self.pref.enscriptpath =  winreg.EnumValue(reg, 0)[1].encode('shift_jis')
             except:
-                print '_winreg error!'
+                print('_winreg error!')
                 pass
 
-        title_sjis =  unicode(title, 'utf-8', 'ignore').encode('shift_jis')
+        title_sjis =  str(title, 'utf-8', 'ignore').encode('shift_jis')
         subprocess.Popen(self.pref.enscriptpath + " showNotes /q intitle:\"%s\"" % title_sjis)
     #}}}
 
@@ -329,7 +329,7 @@ class Evervimmer(object):
             return string
         else:
             try:
-                return unicode(string, self.pref.encoding).encode('utf-8')
+                return str(string, self.pref.encoding).encode('utf-8')
             except:
                 return string
     # }}}
@@ -340,7 +340,7 @@ class Evervimmer(object):
             return string
         else:
             try:
-                return unicode(string, 'utf-8').encode(self.pref.encoding)
+                return str(string, 'utf-8').encode(self.pref.encoding)
             except:
                 return string
     # }}}

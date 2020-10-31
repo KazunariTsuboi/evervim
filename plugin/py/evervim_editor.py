@@ -2,9 +2,9 @@
 # vim: sts=4 sw=4 fdm=marker
 # Author: kakkyz <kakkyz81@gmail.com>
 # License: MIT
-import markdownAndENML
+from . import markdownAndENML
 import re
-from evernoteapi import EvernoteAPI
+from .evernoteapi import EvernoteAPI
 from xml.dom import minidom
 
 

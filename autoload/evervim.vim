@@ -11,7 +11,7 @@
 " ---------------------------------------------------------------------------
 function! evervim#logincheck() " {{{
     try
-    python << EOF
+    python3 << EOF
 try:
     Evervimmer.getInstance().auth()
     print 'login successful.'
@@ -27,14 +27,14 @@ endfunction
 "}}}
 
 function! evervim#setPref() " {{{
-    python Evervimmer.getInstance().setPref()
+    python3 Evervimmer.getInstance().setPref()
     echo 'reload global variable for setting.'
 endfunction
 "}}}
 
 function! evervim#setup() " {{{
-    python Evervimmer.getInstance().setPref()
-    python Evervimmer.getInstance().setAPI()
+    python3 Evervimmer.getInstance().setPref()
+    python3 Evervimmer.getInstance().setAPI()
     return evervim#logincheck()
 endfunction
 "}}}
@@ -43,7 +43,7 @@ function! evervim#notesByNotebook() " {{{
     call evervim#listBufSetup()
 
     setlocal modifiable
-    python Evervimmer.getInstance().notesByNotebook()
+    python3 Evervimmer.getInstance().notesByNotebook()
     setlocal nomodifiable
     set ft=notes
 
@@ -55,7 +55,7 @@ function! evervim#notesByTag() " {{{
     call evervim#listBufSetup()
 
     setlocal modifiable
-    python Evervimmer.getInstance().notesByTag()
+    python3 Evervimmer.getInstance().notesByTag()
     setlocal nomodifiable
     set ft=notesbytag
 
@@ -72,7 +72,7 @@ function! evervim#getNote() " {{{
     call evervim#noteBufSetup()
 
     setlocal modifiable
-    python Evervimmer.getInstance().getNote()
+    python3 Evervimmer.getInstance().getNote()
     exec 'silent! :w!'
     call evervim#setBufAutocmdWhenWritePost()
 endfunction
@@ -88,7 +88,7 @@ endfunction
 "}}}
 
 function! evervim#updateNote() " {{{
-    python Evervimmer.getInstance().updateNote()
+    python3 Evervimmer.getInstance().updateNote()
 endfunction
 "}}}
 
@@ -96,7 +96,7 @@ function! evervim#notebookList() " {{{
     call evervim#listBufSetup()
 
     setlocal modifiable
-    python Evervimmer.getInstance().listNotebooks()
+    python3 Evervimmer.getInstance().listNotebooks()
     setlocal nomodifiable
     set ft=notebooks
 
@@ -108,7 +108,7 @@ function! evervim#evervimSearchByQuery(word) " {{{
     call evervim#listBufSetup()
 
     setlocal modifiable
-    python Evervimmer.getInstance().searchByQuery()
+    python3 Evervimmer.getInstance().searchByQuery()
     setlocal nomodifiable
     set ft=notesbyquery
 
@@ -123,11 +123,11 @@ function! evervim#pageNext() " {{{
 
     setlocal modifiable
     if &ft == 'notes'
-        python Evervimmer.getInstance().notesByNotebookNextpage()
+        python3 Evervimmer.getInstance().notesByNotebookNextpage()
     elseif &ft == 'notesbytag'
-        python Evervimmer.getInstance().notesByTagNextpage()
+        python3 Evervimmer.getInstance().notesByTagNextpage()
     elseif &ft == 'notesbyquery'
-        python Evervimmer.getInstance().searchByQueryNextpage()
+        python3 Evervimmer.getInstance().searchByQueryNextpage()
     endif
     setlocal nomodifiable
 endfunction
@@ -140,11 +140,11 @@ function! evervim#pagePrev() " {{{
 
     setlocal modifiable
     if &ft == 'notes'
-        python Evervimmer.getInstance().notesByNotebookPrevpage()
+        python3 Evervimmer.getInstance().notesByNotebookPrevpage()
     elseif &ft == 'notesbytag'
-        python Evervimmer.getInstance().notesByTagPrevpage()
+        python3 Evervimmer.getInstance().notesByTagPrevpage()
     elseif &ft == 'notesbyquery'
-        python Evervimmer.getInstance().searchByQueryPrevpage()
+        python3 Evervimmer.getInstance().searchByQueryPrevpage()
     endif
     setlocal nomodifiable
 endfunction
@@ -162,7 +162,7 @@ endfunction
 
 function! evervim#createNote() " {{{
     try
-        python Evervimmer.getInstance().createNote()
+        python3 Evervimmer.getInstance().createNote()
         " clear Create autocmd
         augroup evervimCreate
             autocmd!
@@ -201,7 +201,7 @@ function! evervim#listTags() " {{{
     call evervim#listBufSetup()
 
     setlocal modifiable
-    python Evervimmer.getInstance().listTags()
+    python3 Evervimmer.getInstance().listTags()
     setlocal nomodifiable
     set ft=taglists
 
@@ -263,24 +263,24 @@ endfunction
 
 function! evervim#openBrowser() " {{{
     if &ft == 'notes' || &ft == 'notesbytag' || &ft == 'notesbyquery'
-        python Evervimmer.getInstance().cursorNoteOpenBrowser()
+        python3 Evervimmer.getInstance().cursorNoteOpenBrowser()
     else
-        python Evervimmer.getInstance().currentNoteOpenBrowser()
+        python3 Evervimmer.getInstance().currentNoteOpenBrowser()
     endif
 endfunction
 "}}}
 
 function! evervim#openClient() " {{{
     if &ft == 'notes' || &ft == 'notesbytag' || &ft == 'notesbyquery'
-        python Evervimmer.getInstance().cursorNoteOpenClient()
+        python3 Evervimmer.getInstance().cursorNoteOpenClient()
     else
-        python Evervimmer.getInstance().currentNoteOpenClient()
+        python3 Evervimmer.getInstance().currentNoteOpenClient()
     endif
 endfunction
 "}}}
 
 try
-python << EOF
+python3 << EOF
 import sys,os,vim
 sys.path.append(os.path.join(vim.eval('expand("<sfile>:p:h")'),'../plugin/py/'))
 from evervimmer import Evervimmer

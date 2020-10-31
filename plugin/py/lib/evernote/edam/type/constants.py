@@ -7,7 +7,7 @@
 #
 
 from thrift.Thrift import TType, TMessageType, TException, TApplicationException
-from ttypes import *
+from .ttypes import *
 
 EDAM_NOTE_SOURCE_WEB_CLIP = "web.clip"
 EDAM_NOTE_SOURCE_MAIL_CLIP = "mail.clip"

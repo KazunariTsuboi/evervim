@@ -169,7 +169,7 @@ class EvernoteAPI(object):
                                            UserStoreConstants.EDAM_VERSION_MAJOR,
                                            UserStoreConstants.EDAM_VERSION_MINOR)
         if not versionOK:
-            raise StandardError("evernoteAPI versionCheck NG. need update API(evervim/plugin/py/lib/*).")
+            raise Exception("evernoteAPI versionCheck NG. need update API(evervim/plugin/py/lib/*).")
     #}}}
 
     def __getAuthToken(self):  # {{{

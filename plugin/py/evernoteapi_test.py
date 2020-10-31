@@ -3,8 +3,8 @@
 # Author: kakkyz <kakkyz81@gmail.com>
 # License: MIT
 import unittest
-from evernoteapi import EvernoteAPI
-from evernoteapi import EvernoteList
+from .evernoteapi import EvernoteAPI
+from .evernoteapi import EvernoteList
 import evernote.edam.type.ttypes as Types
 import evernote.edam.error.ttypes as Errors
 
@@ -33,7 +33,7 @@ class TestEvernoteAPI(unittest.TestCase):
     def testListNoteBooks(self):  # {{{
         notebooks = self.api.listNotebooks()
         self.assertIsInstance(notebooks, list)
-        self.assertNotEquals(0, len(notebooks))
+        self.assertNotEqual(0, len(notebooks))
         for notebook in notebooks:
             self.assertTrue(hasattr(notebook, 'guid'))
             self.assertTrue(hasattr(notebook, 'name'))
@@ -42,7 +42,7 @@ class TestEvernoteAPI(unittest.TestCase):
     def testListTags(self):  # {{{
         tags = self.api.listTags()
         self.assertIsInstance(tags , list)
-        self.assertNotEquals(0, len(tags))
+        self.assertNotEqual(0, len(tags))
         for tag in tags:
             self.assertTrue(hasattr(tag, 'guid'))
             self.assertTrue(hasattr(tag, 'name'))
@@ -55,7 +55,7 @@ class TestEvernoteAPI(unittest.TestCase):
         for tag in tags:
             [notes.append(note) for note in self.api.notesByTag(tag).elem]
         # less more 1 notes
-        self.assertNotEquals(0, len(notes))
+        self.assertNotEqual(0, len(notes))
         for note in notes:
             self.assertTrue(hasattr(note, 'guid'))
      #}}}
@@ -66,7 +66,7 @@ class TestEvernoteAPI(unittest.TestCase):
         for notebook in notebooks:
             [notes.append(note) for note in self.api.notesByNotebook(notebook).elem]
         # less more 1 notes
-        self.assertNotEquals(0, len(notes))
+        self.assertNotEqual(0, len(notes))
         for note in notes:
             self.assertTrue(hasattr(note, 'guid'))
      #}}}
@@ -74,7 +74,7 @@ class TestEvernoteAPI(unittest.TestCase):
     def testNotesByQuery(self):  # {{{
         notes = self.api.notesByQuery('日本語').elem
         # less more 1 notes
-        self.assertNotEquals(0, len(notes))
+        self.assertNotEqual(0, len(notes))
         for note in notes:
             self.assertTrue(hasattr(note, 'guid'))
      #}}}
@@ -127,7 +127,7 @@ class TestEvernoteAPI(unittest.TestCase):
 
     def __getOneNote(self):  # {{{
         notes = self.api.notesByQuery('日本語').elem
-        self.assertNotEquals(0, len(notes))
+        self.assertNotEqual(0, len(notes))
         for note in notes:
             return note
     #}}}
@@ -189,7 +189,7 @@ class TestEvernoteAPI(unittest.TestCase):
 
 if __name__ == '__main__':
     from time import localtime, strftime
-    print '\n**' + strftime("%a, %d %b %Y %H:%M:%S", localtime()) + '**\n'
+    print('\n**' + strftime("%a, %d %b %Y %H:%M:%S", localtime()) + '**\n')
 # profileを取るとき
 #   import test.pystone
 #   import cProfile
